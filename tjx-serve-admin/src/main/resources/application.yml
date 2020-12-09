@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: tjx-admin
+  profiles:
+    active: dev #默认为开发环境
+

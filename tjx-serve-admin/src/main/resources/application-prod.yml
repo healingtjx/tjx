@@ -1,0 +1,3 @@
+#配置日志位置
+logback:
+  loghome: E:\log\admin

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.healing.tjx</groupId>
+    <artifactId>tjx</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>tjx-common</module>
+        <module>tjx-security</module>
+        <module>tjx-generate</module>
+        <module>tjx-serve-admin</module>
+        <module>tjx-serve-shop</module>
+    </modules>
+
+    <!-- 基于springboot 2.3.0 -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.0.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 版本配置 -->
+    <properties>
+        <hutool.version>5.5.2</hutool.version>
+        <tjx-common.version>1.0-SNAPSHOT</tjx-common.version>
+        <tjx-security.version>1.0-SNAPSHOT</tjx-security.version>
+    </properties>
+
+    <!-- 子模块必须基础的 jar -->
+    <dependencies>
+        <!-- aop -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- hutool 工具集合包-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <!-- lombok 插件 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- 声明 基础 jar,子模块需要继承的化，就不用写版本号 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- mall通用模块 -->
+            <dependency>
+                <groupId>com.healing.tjx</groupId>
+                <artifactId>tjx-common</artifactId>
+                <version>${tjx-common.version}</version>
+            </dependency>
+            <!-- 权限模块 -->
+            <dependency>
+                <groupId>com.healing.tjx</groupId>
+                <artifactId>tjx-security</artifactId>
+                <version>${tjx-security.version}</version>
+            </dependency>
+            <!-- hutool 工具集合包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>
