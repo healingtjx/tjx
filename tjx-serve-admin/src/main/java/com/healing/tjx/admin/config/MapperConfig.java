@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Configuration;
  * @创建时间: 创建于14:10 2020-12-10
  **/
 @Configuration
-@MapperScan("com.baomidou.mybatisplus.samples.quickstart.mapper")
+@MapperScan("com.healing.tjx.admin.mapper")
 public class MapperConfig {
 }

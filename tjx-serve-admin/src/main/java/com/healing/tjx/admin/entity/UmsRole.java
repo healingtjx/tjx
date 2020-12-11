@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 后台用户表
+ * 后台用户角色表
  * </p>
  *
  * @author tjx
@@ -21,42 +21,30 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value="UmsAdmin对象", description="后台用户表")
-public class UmsAdmin implements Serializable {
+@ApiModel(value="UmsRole对象", description="后台用户角色表")
+public class UmsRole implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    private String username;
+    @ApiModelProperty(value = "名称")
+    private String name;
 
-    @ApiModelProperty(value = "md5(md5(password) + salt)")
-    private String password;
+    @ApiModelProperty(value = "描述")
+    private String description;
 
-    @ApiModelProperty(value = "头像")
-    private String icon;
-
-    @ApiModelProperty(value = "邮箱")
-    private String email;
-
-    @ApiModelProperty(value = "昵称")
-    private String nickName;
-
-    @ApiModelProperty(value = "备注信息")
-    private String note;
+    @ApiModelProperty(value = "后台用户数量")
+    private Integer adminCount;
 
     @ApiModelProperty(value = "创建时间")
     private LocalDateTime createTime;
 
-    @ApiModelProperty(value = "最后登录时间")
-    private LocalDateTime loginTime;
-
-    @ApiModelProperty(value = "帐号启用状态：0->禁用；1->启用")
+    @ApiModelProperty(value = "启用状态：0->禁用；1->启用")
     private Integer status;
 
-    @ApiModelProperty(value = "密码盐")
-    private String salt;
+    private Integer sort;
 
 
 }
