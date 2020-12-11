@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
+import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
@@ -50,7 +51,8 @@ public class GenerateApplication {
         gc.setOutputDir(projectPath + "/tjx-generate/target/template");
         gc.setAuthor("tjx");
         gc.setOpen(false);
-         gc.setSwagger2(true); //实体属性 Swagger2 注解
+        gc.setSwagger2(true); //实体属性 Swagger2 注解
+//        gc.setDateType(DateType.ONLY_DATE);//配置 时间类型
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
