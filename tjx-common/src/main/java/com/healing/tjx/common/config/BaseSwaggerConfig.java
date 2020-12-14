@@ -22,6 +22,7 @@ public abstract class BaseSwaggerConfig {
 
     /**
      * 自定义Swagger配置
+     * @return  SwaggerProperties
      */
     public abstract SwaggerProperties swaggerProperties();
 

@@ -8,7 +8,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -25,8 +24,9 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = ApiException.class)
     public BasicsResult handleValidException(ApiException e){
-        if(e.getResultCode() != null)
+        if(e.getResultCode() != null){
             return BasicsResult.failed(e.getResultCode());
+        }
         return BasicsResult.failed(e.getMessage());
     }
 

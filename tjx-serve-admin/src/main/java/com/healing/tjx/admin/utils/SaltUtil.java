@@ -17,9 +17,9 @@ public class SaltUtil {
      * @return String
      */
     public static String getNextSalt()   {
-        Random RANDOM = new SecureRandom();
+        Random random = new SecureRandom();
         byte[] salt = new byte[16];
-        RANDOM.nextBytes(salt);
+        random.nextBytes(salt);
         return new BASE64Encoder().encode(salt);
     }
 

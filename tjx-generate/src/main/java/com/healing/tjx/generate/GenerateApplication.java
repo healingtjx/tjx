@@ -55,7 +55,8 @@ public class GenerateApplication {
         gc.setOutputDir(src);
         gc.setAuthor("tjx");
         gc.setOpen(false);
-        gc.setSwagger2(true); //实体属性 Swagger2 注解
+        //实体属性 Swagger2 注解
+        gc.setSwagger2(true);
 //        gc.setDateType(DateType.ONLY_DATE);//配置 时间类型
         mpg.setGlobalConfig(gc);
 
