@@ -1,10 +1,10 @@
 package com.healing.tjx;
 
-import cn.hutool.json.JSON;
+
 import cn.hutool.json.JSONUtil;
 import com.healing.tjx.admin.AdminApplication;
 import com.healing.tjx.admin.entity.UmsAdmin;
-import com.healing.tjx.admin.service.IUmsAdminService;
+import com.healing.tjx.admin.mapper.UmsAdminMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import javax.annotation.Resource;
+
 
 /**
  * @作者: tjx
@@ -25,25 +25,14 @@ import java.time.LocalDateTime;
 @SpringBootTest(classes = AdminApplication.class)
 public class UmsAdminMapperTests {
 
-//
-    @Autowired
-    private IUmsAdminService iUmsAdminService;
+    @Resource
+    private UmsAdminMapper umsAdminMapper;
 
     @Test
     public void testAdd(){
-        UmsAdmin umsAdmin = new UmsAdmin();
-        umsAdmin.setNickName("test");
-        boolean save = iUmsAdminService.save(umsAdmin);
-        log.info(save+"");
+        UmsAdmin umsAdmin = umsAdminMapper.selectById(1);
+        log.info(JSONUtil.toJsonStr(umsAdmin));
 
-    }
-
-    @Test
-    public void testGet(){
-        UmsAdmin byId = iUmsAdminService.getById(1);
-        byId.setCreateTime(LocalDateTime.now());
-        iUmsAdminService.updateById(byId);
-        log.info("json:"+JSONUtil.toJsonStr(byId));
     }
 
 
