@@ -32,13 +32,7 @@ public class BasicsResult {
     }
 
 
-    /**
-     * 操作成功返回
-     * @return
-     */
-    public static BasicsResult success(){
-        return new BasicsResult(ResultCode.SUCCESS);
-    }
+
 
     /**
      * 操作失败返回
@@ -56,6 +50,15 @@ public class BasicsResult {
     public static BasicsResult failed(String message){
         return new BasicsResult(ResultCode.FAILED,message);
     }
+
+    /**
+     * 操作失败返回 带信息
+     * @return
+     */
+    public static BasicsResult failed(ResultCode resultCode){
+        return new BasicsResult(resultCode);
+    }
+
 
     /**
      * 参数验证失败返回结果

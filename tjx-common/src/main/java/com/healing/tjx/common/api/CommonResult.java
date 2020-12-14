@@ -18,6 +18,10 @@ public class CommonResult<T> extends BasicsResult {
      */
     private T data;
 
+    CommonResult(ResultCode code) {
+        super(code);
+    }
+
     CommonResult(ResultCode code,T data) {
         super(code);
         this.data = data;
@@ -28,6 +32,12 @@ public class CommonResult<T> extends BasicsResult {
     }
 
 
+    /**
+     * 成功返回结果
+     */
+    public static <T> CommonResult<T> success() {
+        return new CommonResult<T>(ResultCode.SUCCESS);
+    }
 
     /**
      * 成功返回结果
