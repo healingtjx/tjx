@@ -2,6 +2,13 @@
 logback:
   loghome: E:\log\admin
 
+#配置显示 mapper sql信息 和 调试信息
+logging:
+  level:
+    com:
+      healing:
+        tjx : debug
+
 #存储配置
 spring:
   #mysql配置

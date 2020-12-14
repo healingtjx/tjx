@@ -8,7 +8,6 @@
 
     <!-- 定义日志文件的存放位置 -->
     <springProperty scope="context" name="log_dir" source="logback.loghome"/>
-
     <!-- 日志存放最大天数 -->
     <property name="maxHistory" value="30"/>
     <!-- 日志编码格式 -->
@@ -28,6 +27,7 @@
             <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} ==== [%thread] ==== %-5level %logger{50} - %msg%n</pattern>
         </layout>
     </appender>
+
     <!-- ERROR级别日志 -->
     <!-- 滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其它文件 -->
     <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -47,17 +47,6 @@
             -->
             <maxHistory>${maxHistory}</maxHistory>
         </rollingPolicy>
-        <!-- 按照固定窗口模式生成日志文件，当文件大于20MB时，生成新的日志文件。窗口大小是1到3，当保存了3个归档文件后，将覆盖最早的日志。
-        <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
-          <fileNamePattern>${log_dir}/%d{yyyy-MM-dd}/.log.zip</fileNamePattern>
-          <minIndex>1</minIndex>
-          <maxIndex>3</maxIndex>
-        </rollingPolicy>   -->
-        <!-- 查看当前活动文件的大小，如果超过指定大小会告知RollingFileAppender 触发当前活动文件滚动
-        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <maxFileSize>5MB</maxFileSize>
-        </triggeringPolicy>   -->
-
         <encoder>
             <pattern>${normal}</pattern>
             <charset>${encoding}</charset>
@@ -110,9 +99,6 @@
 
 
 
-    <!--<logger name="com.delayed">-->
-        <!--<level value="INFO"/>-->
-    <!--</logger>-->
 
 
     <!-- root级别   INFO -->
@@ -123,8 +109,6 @@
         <appender-ref ref="ERROR" />
         <appender-ref ref="INFO" />
         <appender-ref ref="WARN" />
-        <!--<appender-ref ref="TRACE" />-->
     </root>
-
 
 </configuration>
