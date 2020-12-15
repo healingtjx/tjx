@@ -6,15 +6,13 @@ import com.healing.tjx.admin.service.IUmsAuthenticationService;
 import com.healing.tjx.common.api.BasicsResult;
 import com.healing.tjx.common.api.CommonResult;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @作者: tjx
@@ -38,6 +36,11 @@ public class UmsAuthorizationController {
         return iUmsAuthenticationService.login(umsAdminLoginParam);
     }
 
+    @ApiModelProperty(value = "测试")
+    @GetMapping("/test")
+    public CommonResult test(){
+        return CommonResult.success();
+    }
 
 
 

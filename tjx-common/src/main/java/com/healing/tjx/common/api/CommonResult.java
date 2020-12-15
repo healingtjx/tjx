@@ -62,8 +62,14 @@ public class CommonResult<T> extends BasicsResult {
      * 未授权返回结果
      */
     public static <T> CommonResult<T> forbidden(T data) {
-        return new CommonResult<T>(ResultCode.FORBIDDEN, ResultCode.FORBIDDEN.getMessage(), data);
+        return new CommonResult<T>(ResultCode.FORBIDDEN, data);
     }
 
+    /**
+     * 未登录返回结果
+     */
+    public static <T> CommonResult<T> unauthorized(T data) {
+        return new CommonResult<T>(ResultCode.UNAUTHORIZED, data);
+    }
 
 }
