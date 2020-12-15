@@ -4,3 +4,30 @@ spring:
   profiles:
     active: dev #默认为开发环境
 
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: Qxixow9oKWBoo4BJi7zm #JWT加解密使用的密钥(使用的强密码)
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer '  #JWT负载中拿到开头
+
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      # swagger 相关
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /webjars/springfox-swagger-ui/**
+      # knife4j( Swagger 皮肤)
+      - /doc.html
+      # 公共资源
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      # druid
+      - /druid/**
+      # admin用户登陆接口
+      - /admin/authentication/login
