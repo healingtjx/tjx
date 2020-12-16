@@ -8,6 +8,7 @@ import com.healing.tjx.admin.dto.TokenResult;
 import com.healing.tjx.admin.dto.UmsAdminLoginParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
+import com.healing.tjx.admin.service.IUmsAdminCacheService;
 import com.healing.tjx.admin.service.IUmsAuthenticationService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.exception.Asserts;
@@ -29,20 +30,39 @@ import javax.annotation.Resource;
 public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
 
 
-    @Resource
-    private UmsAdminMapper umsAdminMapper;
-
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Resource
+    private UmsAdminMapper umsAdminMapper;
+
+
+    @Autowired
+    private IUmsAdminCacheService iUmsAdminCacheService;
+
+
+    @Override
+    public UmsAdmin getAdminByUsernameAndCache(String username) {
+        //如果缓存有就直接返回缓存
+        UmsAdmin admin = iUmsAdminCacheService.getAdmin(username);
+        if(admin != null){
+            return admin;
+        }
+        //如果没有就重新查询
+        QueryWrapper<UmsAdmin> queryWrapper = new QueryWrapper<UmsAdmin>()
+                .eq("username",username);
+        UmsAdmin umsAdmin = umsAdminMapper.selectOne(queryWrapper);
+        if(umsAdmin != null){
+            //查到就缓存下来
+            iUmsAdminCacheService.setAdmin(umsAdmin);
+        }
+        return umsAdmin;
+    }
 
     @Override
     public CommonResult<TokenResult> login(UmsAdminLoginParam umsAdminLoginParam) {
-
         //用户名查询是否存在
-        QueryWrapper<UmsAdmin> queryWrapper = new QueryWrapper<UmsAdmin>()
-                .eq("username",umsAdminLoginParam.getUsername());
-        UmsAdmin umsAdmin = umsAdminMapper.selectOne(queryWrapper);
+        UmsAdmin umsAdmin = this.getAdminByUsernameAndCache(umsAdminLoginParam.getUsername());
         if(umsAdmin == null){
             Asserts.fail("用户名不存在");
         }
@@ -57,15 +77,15 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
         TokenResult tokenResult = new TokenResult();
         tokenResult.setToken(token);
         tokenResult.setTokenHeader(jwtTokenUtil.getTokenHead());
+        //将用户信息存入 redis
+
         return CommonResult.success(tokenResult);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) {
         //用户名查询是否存在
-        QueryWrapper<UmsAdmin> queryWrapper = new QueryWrapper<UmsAdmin>()
-                .eq("username",username);
-        UmsAdmin umsAdmin = umsAdminMapper.selectOne(queryWrapper);
+        UmsAdmin umsAdmin = this.getAdminByUsernameAndCache(username);
         if(umsAdmin != null){
             //实例化 user对象
             return new AdminUserDetails(umsAdmin);
