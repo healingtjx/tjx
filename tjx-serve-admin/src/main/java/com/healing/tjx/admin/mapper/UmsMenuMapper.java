@@ -2,6 +2,9 @@ package com.healing.tjx.admin.mapper;
 
 import com.healing.tjx.admin.entity.UmsMenu;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,5 +16,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UmsMenuMapper extends BaseMapper<UmsMenu> {
 
-
+    /**
+     * 根据角色ids 获取菜单
+     * @param roleIds 角色id集合
+     * @return UmsMenu 菜单
+     */
+    List<UmsMenu> selectMenuByRoleIds(@Param("roleIds") List<Long> roleIds);
 }

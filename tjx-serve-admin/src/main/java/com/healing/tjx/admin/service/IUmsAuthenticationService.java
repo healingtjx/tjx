@@ -1,5 +1,6 @@
 package com.healing.tjx.admin.service;
 
+import com.healing.tjx.admin.dto.AdminInfoResult;
 import com.healing.tjx.admin.dto.TokenResult;
 import com.healing.tjx.admin.dto.UmsAdminLoginParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
@@ -39,5 +40,14 @@ public interface IUmsAuthenticationService {
      * @return UserDetails
      */
     UserDetails loadUserByUsername(String username);
+
+
+    /**
+     * 用户信息
+     *
+     * @param username  用户名
+     * @return CommonResult<AdminInfoResult> 用户信息和菜单
+     */
+    CommonResult<AdminInfoResult> userInfo(String username);
 
 }

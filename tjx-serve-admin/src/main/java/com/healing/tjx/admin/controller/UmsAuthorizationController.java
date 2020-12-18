@@ -45,27 +45,16 @@ public class UmsAuthorizationController {
         if(principal == null){
             return CommonResult.unauthorized(null);
         }
-        String name = principal.getName();
-        UmsAdmin admin = iUmsAuthenticationService.getAdminByUsernameAndCache(name);
-        //封装结果
-        AdminInfoResult adminInfoResult = new AdminInfoResult();
-        adminInfoResult.setUsername(admin.getUsername());
-        return CommonResult.success(adminInfoResult);
+        return iUmsAuthenticationService.userInfo(principal.getName());
     }
 
     @ApiOperation(value = "登出功能")
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    @ResponseBody
     public CommonResult logout() {
         return CommonResult.success(null);
     }
 
 
-    @ApiModelProperty(value = "测试")
-    @GetMapping("/test")
-    public CommonResult test(){
-        return CommonResult.success();
-    }
 
 
 

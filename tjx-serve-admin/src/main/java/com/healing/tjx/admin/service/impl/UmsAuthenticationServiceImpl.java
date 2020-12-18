@@ -4,13 +4,19 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.healing.tjx.admin.bo.AdminUserDetails;
+import com.healing.tjx.admin.dto.AdminInfoResult;
 import com.healing.tjx.admin.dto.TokenResult;
 import com.healing.tjx.admin.dto.UmsAdminLoginParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
+import com.healing.tjx.admin.entity.UmsMenu;
+import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
+import com.healing.tjx.admin.mapper.UmsMenuMapper;
+import com.healing.tjx.admin.mapper.UmsRoleMapper;
 import com.healing.tjx.admin.service.IUmsAdminCacheService;
 import com.healing.tjx.admin.service.IUmsAuthenticationService;
 import com.healing.tjx.common.api.CommonResult;
+import com.healing.tjx.common.api.ResultCode;
 import com.healing.tjx.common.exception.Asserts;
 import com.healing.tjx.security.utils.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +26,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -35,6 +43,12 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
 
     @Resource
     private UmsAdminMapper umsAdminMapper;
+
+    @Resource
+    private UmsMenuMapper umsMenuMapper;
+
+    @Resource
+    private UmsRoleMapper umsRoleMapper;
 
 
     @Autowired
@@ -91,6 +105,35 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
             return new AdminUserDetails(umsAdmin);
         }
         throw new UsernameNotFoundException("用户名不存在");
+    }
+
+    @Override
+    public CommonResult<AdminInfoResult> userInfo(String username) {
+        UmsAdmin umsAdmin = this.getAdminByUsernameAndCache(username);
+        if(umsAdmin == null){
+            //返回登陆过期
+            Asserts.fail(ResultCode.UNAUTHORIZED);
+        }
+        //获取 当前用户关联的角色
+        //如果没有就重新查询
+        List<UmsRole> umsRoles = umsRoleMapper.selectRoleByAdminId(umsAdmin.getId());
+        if(umsRoles.size() == 0){
+            Asserts.fail("当前账号没有赋予角色");
+        }
+        //获取用户授权菜单
+        List<Long> ids = umsRoles.stream().map(UmsRole::getId).collect(Collectors.toList());
+        List<UmsMenu> umsMenus = umsMenuMapper.selectMenuByRoleIds(ids);
+        if(umsMenus.size() == 0){
+            Asserts.fail("当前角色没有菜单权限");
+        }
+        //获取角色
+        List<String> roles = umsRoles.stream().map(UmsRole::getName).collect(Collectors.toList());
+        //封装结果
+        AdminInfoResult adminInfoResult = new AdminInfoResult();
+        adminInfoResult.setUsername(username);
+        adminInfoResult.setRoles(roles);
+        adminInfoResult.setMenus(umsMenus);
+        return CommonResult.success(adminInfoResult);
     }
 
 
