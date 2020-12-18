@@ -19,13 +19,13 @@ public class UmsAdminCacheServiceImpl implements IUmsAdminCacheService {
 
 
     @Value("${redis.database}")
-    private static String REDIS_DATABASE;
+    private String REDIS_DATABASE;
 
     @Value("${redis.expire.common}")
-    private static Long REDIS_EXPIRE;
+    private Long REDIS_EXPIRE;
 
     @Value("${redis.keys.admin}")
-    private static String REDIS_KEY_ADMIN;
+    private String REDIS_KEY_ADMIN;
 
 
     @Autowired
