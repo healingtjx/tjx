@@ -10,6 +10,10 @@ jwt:
   expiration: 604800 #JWT的超期限时间(60*60*24*7)
   tokenHead: 'Bearer '  #JWT负载中拿到开头
 
+#mybatis-plus 扫描配置
+mybatis-plus:
+  mapper-locations:
+    - classpath:mapper/*.xml
 
 redis:
   database: tjx
