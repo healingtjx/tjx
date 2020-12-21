@@ -51,4 +51,12 @@ public interface IUmsAuthenticationService {
      */
     CommonResult<AdminInfoResult> userInfo(String username);
 
+
+    /**
+     * 登出(删除redis信息)
+     *
+     * @param username 用户名
+     * @return CommonResult success
+     */
+    CommonResult logout(String username);
 }

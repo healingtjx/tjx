@@ -47,10 +47,11 @@ public class UmsAuthorizationController {
 
     @ApiOperation(value = "登出功能")
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    public CommonResult logout() {
-        //删除redis登陆信息
-
-        return CommonResult.success(null);
+    public CommonResult logout(Principal principal) {
+        if (principal == null) {
+            return CommonResult.success();
+        }
+        return iUmsAuthenticationService.logout(principal.getName());
     }
 
 

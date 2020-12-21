@@ -23,4 +23,12 @@ public interface IUmsAdminCacheService {
      * @return
      */
     UmsAdmin getAdmin(String username);
+
+
+    /**
+     * 删除缓存
+     *
+     * @param username
+     */
+    void delAdmin(String username);
 }

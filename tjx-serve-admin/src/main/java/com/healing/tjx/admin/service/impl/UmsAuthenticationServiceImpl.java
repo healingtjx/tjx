@@ -136,5 +136,11 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
         return CommonResult.success(adminInfoResult);
     }
 
+    @Override
+    public CommonResult logout(String username) {
+        iUmsAdminCacheService.delAdmin(username);
+        return CommonResult.success();
+    }
+
 
 }
