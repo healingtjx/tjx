@@ -22,13 +22,15 @@ public abstract class BaseSwaggerConfig {
 
     /**
      * 自定义Swagger配置
-     * @return  SwaggerProperties
+     *
+     * @return SwaggerProperties
      */
     public abstract SwaggerProperties swaggerProperties();
 
 
     /**
      * 创建实例
+     *
      * @return
      */
     @Bean
@@ -49,6 +51,7 @@ public abstract class BaseSwaggerConfig {
 
     /**
      * 实例基本信息
+     *
      * @param swaggerProperties
      * @return
      */
@@ -63,6 +66,7 @@ public abstract class BaseSwaggerConfig {
 
     /**
      * 认证信息
+     *
      * @return
      */
     private List<ApiKey> securitySchemes() {
@@ -75,6 +79,7 @@ public abstract class BaseSwaggerConfig {
 
     /**
      * 需要认证的路径
+     *
      * @return
      */
     private List<SecurityContext> securityContexts() {
@@ -86,6 +91,7 @@ public abstract class BaseSwaggerConfig {
 
     /**
      * 添加认证路径
+     *
      * @param pathRegex
      * @return
      */

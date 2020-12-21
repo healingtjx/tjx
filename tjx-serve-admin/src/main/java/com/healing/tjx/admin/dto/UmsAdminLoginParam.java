@@ -16,11 +16,11 @@ import javax.validation.constraints.NotEmpty;
 public class UmsAdminLoginParam {
 
     @NotEmpty
-    @ApiModelProperty(value = "用户名",required = true)
+    @ApiModelProperty(value = "用户名", required = true)
     private String username;
 
     @NotEmpty
-    @ApiModelProperty(value = "密码(md5(password))",required = true)
+    @ApiModelProperty(value = "密码(md5(password))", required = true)
     private String password;
 
 }

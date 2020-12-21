@@ -27,6 +27,4 @@ public class AdminInfoResult {
     private List<String> roles;
 
 
-
-
 }

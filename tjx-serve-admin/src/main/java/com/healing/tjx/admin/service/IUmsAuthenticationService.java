@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * 后台用户管理
+ *
  * @author tjx
  */
 public interface IUmsAuthenticationService {
@@ -25,7 +26,7 @@ public interface IUmsAuthenticationService {
 
 
     /**
-     *  用户登陆
+     * 用户登陆
      *
      * @param umsAdminLoginParam 用户名和密码
      * @return CommonResult<TokenResult>
@@ -45,7 +46,7 @@ public interface IUmsAuthenticationService {
     /**
      * 用户信息
      *
-     * @param username  用户名
+     * @param username 用户名
      * @return CommonResult<AdminInfoResult> 用户信息和菜单
      */
     CommonResult<AdminInfoResult> userInfo(String username);

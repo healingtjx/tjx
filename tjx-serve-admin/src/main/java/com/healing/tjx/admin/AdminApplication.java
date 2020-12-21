@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * admin-启动类
+ *
  * @author tjx
  **/
 @SpringBootApplication(scanBasePackages = "com.healing.tjx")

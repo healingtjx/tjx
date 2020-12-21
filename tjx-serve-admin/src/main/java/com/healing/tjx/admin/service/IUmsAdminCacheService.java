@@ -11,12 +11,14 @@ public interface IUmsAdminCacheService {
 
     /**
      * 用户登陆后缓存用户信息(24小时)
+     *
      * @param umsAdmin
      */
     void setAdmin(UmsAdmin umsAdmin);
 
     /**
      * 根据username查询缓存
+     *
      * @param username
      * @return
      */

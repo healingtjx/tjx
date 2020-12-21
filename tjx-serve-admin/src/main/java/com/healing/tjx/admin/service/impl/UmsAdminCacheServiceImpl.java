@@ -34,13 +34,13 @@ public class UmsAdminCacheServiceImpl implements IUmsAdminCacheService {
 
     @Override
     public void setAdmin(UmsAdmin umsAdmin) {
-        String key = REDIS_DATABASE + ":" +REDIS_KEY_ADMIN + umsAdmin.getUsername();
-        redisService.set(key,umsAdmin,REDIS_EXPIRE);
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN + umsAdmin.getUsername();
+        redisService.set(key, umsAdmin, REDIS_EXPIRE);
     }
 
     @Override
     public UmsAdmin getAdmin(String username) {
-        String key = REDIS_DATABASE + ":" +REDIS_KEY_ADMIN + username;
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN + username;
         return (UmsAdmin) redisService.get(key);
     }
 }

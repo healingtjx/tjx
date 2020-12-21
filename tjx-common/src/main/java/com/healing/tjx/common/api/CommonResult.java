@@ -22,12 +22,13 @@ public class CommonResult<T> extends BasicsResult {
         super(code);
     }
 
-    CommonResult(ResultCode code,T data) {
+    CommonResult(ResultCode code, T data) {
         super(code);
         this.data = data;
     }
-    CommonResult(ResultCode code,String message,T data) {
-        super(code,message);
+
+    CommonResult(ResultCode code, String message, T data) {
+        super(code, message);
         this.data = data;
     }
 
@@ -45,14 +46,14 @@ public class CommonResult<T> extends BasicsResult {
      * @param data 获取的数据
      */
     public static <T> CommonResult<T> success(T data) {
-        return new CommonResult<T>(ResultCode.SUCCESS,data);
+        return new CommonResult<T>(ResultCode.SUCCESS, data);
     }
 
     /**
      * 成功返回结果
      *
-     * @param data 获取的数据
-     * @param  message 提示信息
+     * @param data    获取的数据
+     * @param message 提示信息
      */
     public static <T> CommonResult<T> success(T data, String message) {
         return new CommonResult<T>(ResultCode.SUCCESS, message, data);

@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 配置实例
+     *
      * @param httpSecurity
      * @throws Exception
      */
@@ -35,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests();
 
         //处理请求白名单
-        for (String url : ignoreUrlsConfig().getUrls()){
+        for (String url : ignoreUrlsConfig().getUrls()) {
             registry.antMatchers(url).permitAll();
         }
 
@@ -68,6 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 注册实例
+     *
      * @param auth
      * @throws Exception
      */
@@ -79,6 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 配置 密码加密规则
+     *
      * @return
      */
     @Bean
@@ -89,42 +92,47 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     /**
      * 实例化 jwt 过滤器
+     *
      * @return
      */
     @Bean
-    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter(){
+    public JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter() {
         return new JwtAuthenticationTokenFilter();
     }
 
     /**
      * 实例化 没有权限访问时 返回结果
+     *
      * @return
      */
     @Bean
-    public RestfulAccessDeniedHandler restfulAccessDeniedHandler(){
+    public RestfulAccessDeniedHandler restfulAccessDeniedHandler() {
         return new RestfulAccessDeniedHandler();
     }
 
     /**
      * 实例化 未登录或登录过期 返回结果
+     *
      * @return
      */
     @Bean
-    public RestAuthenticationEntryPoint restAuthenticationEntryPoint(){
-        return  new RestAuthenticationEntryPoint();
+    public RestAuthenticationEntryPoint restAuthenticationEntryPoint() {
+        return new RestAuthenticationEntryPoint();
     }
 
     /**
      * 实例化 请求白名单
+     *
      * @return
      */
     @Bean
-    public IgnoreUrlsConfig ignoreUrlsConfig(){
+    public IgnoreUrlsConfig ignoreUrlsConfig() {
         return new IgnoreUrlsConfig();
     }
 
     /**
      * 实例化 jwt规则
+     *
      * @return
      */
     @Bean

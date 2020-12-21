@@ -45,7 +45,7 @@ public class GenerateApplication {
         // 代码生成器
         AutoGenerator mpg = new AutoGenerator();
         //需要定义的参数
-        String path = "/tjx-generate/target/template";
+        String path = "/tjx-generate/target/template" ;
 
 
         // 全局配置
@@ -84,7 +84,7 @@ public class GenerateApplication {
         };
 
         // 如果模板引擎是 freemarker
-        String templatePath = "/templates/mapper.xml.ftl";
+        String templatePath = "/templates/mapper.xml.ftl" ;
 
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();

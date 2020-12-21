@@ -35,14 +35,14 @@ public class UmsAuthorizationController {
 
     @ApiOperation(value = "登录接口【返回token】")
     @PostMapping("/login")
-    public CommonResult<TokenResult> login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam){
+    public CommonResult<TokenResult> login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
         return iUmsAuthenticationService.login(umsAdminLoginParam);
     }
 
     @ApiOperation(value = "用户信息接口【返回用户信息】")
     @GetMapping("/info")
-    public CommonResult<AdminInfoResult> userInfo(Principal principal){
-        if(principal == null){
+    public CommonResult<AdminInfoResult> userInfo(Principal principal) {
+        if (principal == null) {
             return CommonResult.unauthorized(null);
         }
         return iUmsAuthenticationService.userInfo(principal.getName());
@@ -53,11 +53,6 @@ public class UmsAuthorizationController {
     public CommonResult logout() {
         return CommonResult.success(null);
     }
-
-
-
-
-
 
 
 }

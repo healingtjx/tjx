@@ -4,7 +4,7 @@ package com.healing.tjx.common.api;
 /**
  * 枚举基本状态码
  */
-public enum ResultCode  {
+public enum ResultCode {
     /**
      * 成功
      */
@@ -31,18 +31,18 @@ public enum ResultCode  {
     UNAUTHORIZED(401, "暂未登录或token已经过期");
 
 
-
-
-
     private int code;
     private String message;
+
     ResultCode(int code, String message) {
         this.code = code;
         this.message = message;
     }
+
     public int getCode() {
         return code;
     }
+
     public String getMessage() {
         return message;
     }

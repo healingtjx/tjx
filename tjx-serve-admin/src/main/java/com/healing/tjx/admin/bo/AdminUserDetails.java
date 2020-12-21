@@ -15,7 +15,7 @@ public class AdminUserDetails implements UserDetails {
 
     private UmsAdmin umsAdmin;
 
-    public AdminUserDetails(UmsAdmin umsAdmin){
+    public AdminUserDetails(UmsAdmin umsAdmin) {
         this.umsAdmin = umsAdmin;
     }
 

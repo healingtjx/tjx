@@ -23,9 +23,9 @@ public class AdminSecurityConfig extends SecurityConfig {
     private IUmsAuthenticationService authenticationService;
 
 
-
     /**
      * 注入自己实现的 userDetailsService
+     *
      * @return
      */
     @Bean

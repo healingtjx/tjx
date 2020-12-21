@@ -3,16 +3,16 @@
 <mapper namespace="com.healing.tjx.admin.mapper.UmsMenuMapper">
 
     <select id="selectMenuByRoleIds" resultType="com.healing.tjx.admin.entity.UmsMenu">
-      select
-      m.id,m.parent_id,m.create_time,m.title,m.level,m.sort,m.name,m.icon,m.hidden
-      from `ums_role_menu_relation` r
-      inner join `ums_menu` m on r.`menu_id` = m.id
-      where r.`role_id` in (
-        <foreach collection="roleIds" item="role" index="index" separator="," >
+        select
+        m.id,m.parent_id,m.create_time,m.title,m.level,m.sort,m.name,m.icon,m.hidden
+        from `ums_role_menu_relation` r
+        inner join `ums_menu` m on r.`menu_id` = m.id
+        where r.`role_id` in (
+        <foreach collection="roleIds" item="role" index="index" separator=",">
             ${role}
         </foreach>
-      )
-      group by m.id
-      order by m.`sort`,m.id
+        )
+        group by m.id
+        order by m.`sort`,m.id
     </select>
 </mapper>

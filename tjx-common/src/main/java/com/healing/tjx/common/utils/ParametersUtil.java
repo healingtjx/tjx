@@ -13,22 +13,23 @@ public class ParametersUtil {
 
     /**
      * 展示aop前置通知参数 (aop)
+     *
      * @param joinPoint
      * @return
      */
-    public static void showAopBeforeParameters(JoinPoint joinPoint, Logger logger,String methodName) {
+    public static void showAopBeforeParameters(JoinPoint joinPoint, Logger logger, String methodName) {
         Object[] paramValues = joinPoint.getArgs();
-        String[] paramNames = ((CodeSignature)joinPoint.getSignature()).getParameterNames();
-        logger.debug("------------"+methodName+"------------");
+        String[] paramNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
+        logger.debug("------------" + methodName + "------------");
         for (int i = 0; i < paramNames.length; i++) {
-            logger.debug("{}: {}",paramNames[i],paramValues[i]);
+            logger.debug("{}: {}", paramNames[i], paramValues[i]);
         }
 
     }
 
-    public static void showAopAfterResult(Object result,Logger logger,String methodName){
-        logger.debug("结果: {}",result);
-        logger.debug("------------"+methodName+"------------");
+    public static void showAopAfterResult(Object result, Logger logger, String methodName) {
+        logger.debug("结果: {}", result);
+        logger.debug("------------" + methodName + "------------");
     }
 
 }

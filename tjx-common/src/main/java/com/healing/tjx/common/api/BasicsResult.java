@@ -21,41 +21,42 @@ public class BasicsResult {
      */
     private String message;
 
-    BasicsResult (ResultCode code){
+    BasicsResult(ResultCode code) {
         this.code = code.getCode();
         this.message = code.getMessage();
     }
 
-    BasicsResult (ResultCode code,String message){
+    BasicsResult(ResultCode code, String message) {
         this.code = code.getCode();
         this.message = message;
     }
 
 
-
-
     /**
      * 操作失败返回
+     *
      * @return
      */
-    public static BasicsResult failed(){
+    public static BasicsResult failed() {
         return new BasicsResult(ResultCode.FAILED);
     }
 
     /**
      * 操作失败返回 带信息
+     *
      * @param message
      * @return
      */
-    public static BasicsResult failed(String message){
-        return new BasicsResult(ResultCode.FAILED,message);
+    public static BasicsResult failed(String message) {
+        return new BasicsResult(ResultCode.FAILED, message);
     }
 
     /**
      * 操作失败返回 带信息
+     *
      * @return
      */
-    public static BasicsResult failed(ResultCode resultCode){
+    public static BasicsResult failed(ResultCode resultCode) {
         return new BasicsResult(resultCode);
     }
 
@@ -69,10 +70,11 @@ public class BasicsResult {
 
     /**
      * 参数验证失败返回结果
+     *
      * @param message 提示信息
      */
     public static BasicsResult validateFailed(String message) {
-        return new BasicsResult(ResultCode.VALIDATE_FAILED,message);
+        return new BasicsResult(ResultCode.VALIDATE_FAILED, message);
     }
 
 

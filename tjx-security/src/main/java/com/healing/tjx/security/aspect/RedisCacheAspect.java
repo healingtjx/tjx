@@ -20,6 +20,7 @@ public class RedisCacheAspect {
 
     /**
      * 环绕通知  拦截 redis所有操作
+     *
      * @param joinPoint
      * @return Object
      * @throws Throwable
@@ -27,13 +28,13 @@ public class RedisCacheAspect {
     @Around("execution(public * com.healing.tjx.common.service.RedisService.*(..))")
     public Object showParametersAround(ProceedingJoinPoint joinPoint) throws Throwable {
         //获取方法名字
-        String methodName = "RedisService."+joinPoint.getSignature().getName();
+        String methodName = "RedisService." + joinPoint.getSignature().getName();
         //前置显示 参数
-        ParametersUtil.showAopBeforeParameters(joinPoint,log,methodName);
+        ParametersUtil.showAopBeforeParameters(joinPoint, log, methodName);
         //执行连接点方法，object：方法返回值
         Object object = joinPoint.proceed();
         //后置 显示结果
-        ParametersUtil.showAopAfterResult(object,log,methodName);
+        ParametersUtil.showAopAfterResult(object, log, methodName);
         return object;
     }
 

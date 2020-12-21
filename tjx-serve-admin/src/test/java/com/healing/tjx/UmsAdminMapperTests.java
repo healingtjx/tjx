@@ -28,8 +28,9 @@ public class UmsAdminMapperTests {
     @Resource
     private UmsAdminMapper umsAdminMapper;
 
+
     @Test
-    public void testAdd(){
+    public void testAdd() {
         UmsAdmin umsAdmin = umsAdminMapper.selectById(1);
         log.info(JSONUtil.toJsonStr(umsAdmin));
 

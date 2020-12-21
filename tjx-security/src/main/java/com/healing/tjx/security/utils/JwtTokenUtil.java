@@ -19,15 +19,14 @@ import java.util.Map;
 @Slf4j
 public class JwtTokenUtil {
 
-    private static final String CLAIM_KEY_USERNAME = "sub";
-    private static final String CLAIM_KEY_CREATED = "created";
+    private static final String CLAIM_KEY_USERNAME = "sub" ;
+    private static final String CLAIM_KEY_CREATED = "created" ;
     @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.expiration}")
     private Long expiration;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
-
 
 
     /**
@@ -41,12 +40,10 @@ public class JwtTokenUtil {
     }
 
 
-
-
     /**
      * 根据负责生成JWT的token
      *
-     * @return  String
+     * @return String
      */
     private String generateToken(Map<String, Object> claims) {
         return Jwts.builder()
@@ -57,10 +54,10 @@ public class JwtTokenUtil {
     }
 
 
-
     /**
      * 从token中获取JWT中的负载
-     * @return  Claims
+     *
+     * @return Claims
      */
     private Claims getClaimsFromToken(String token) {
         Claims claims = null;
@@ -77,6 +74,7 @@ public class JwtTokenUtil {
 
     /**
      * 生成token的过期时间
+     *
      * @return Date
      */
     private Date generateExpirationDate() {
@@ -85,6 +83,7 @@ public class JwtTokenUtil {
 
     /**
      * 从token中获取登录用户名
+     *
      * @return String
      */
     public String getUserNameFromToken(String token) {
@@ -112,6 +111,7 @@ public class JwtTokenUtil {
 
     /**
      * 判断token是否已经失效
+     *
      * @return boolean
      */
     private boolean isTokenExpired(String token) {
@@ -121,6 +121,7 @@ public class JwtTokenUtil {
 
     /**
      * 从token中获取过期时间
+     *
      * @return Date
      */
     private Date getExpiredDateFromToken(String token) {
@@ -129,9 +130,9 @@ public class JwtTokenUtil {
     }
 
 
-
     /**
-     *  获取配置的tokenHead
+     * 获取配置的tokenHead
+     *
      * @return String
      */
     public String getTokenHead() {

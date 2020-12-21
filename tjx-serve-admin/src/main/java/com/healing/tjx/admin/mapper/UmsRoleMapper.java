@@ -18,6 +18,7 @@ public interface UmsRoleMapper extends BaseMapper<UmsRole> {
 
     /**
      * 根据 adminId 查询所绑定的校色
+     *
      * @param adminId
      * @return List<UmsRole> 角色列表
      */

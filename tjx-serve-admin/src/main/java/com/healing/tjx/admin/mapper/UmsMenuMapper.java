@@ -18,6 +18,7 @@ public interface UmsMenuMapper extends BaseMapper<UmsMenu> {
 
     /**
      * 根据角色ids 获取菜单
+     *
      * @param roleIds 角色id集合
      * @return UmsMenu 菜单
      */

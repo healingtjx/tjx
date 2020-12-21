@@ -95,20 +95,14 @@
     </appender>
 
 
-
-
-
-
-
-
     <!-- root级别   INFO -->
     <root level="INFO">
         <!-- 控制台输出 -->
-        <appender-ref ref="STDOUT" />
+        <appender-ref ref="STDOUT"/>
         <!-- 文件输出 -->
-        <appender-ref ref="ERROR" />
-        <appender-ref ref="INFO" />
-        <appender-ref ref="WARN" />
+        <appender-ref ref="ERROR"/>
+        <appender-ref ref="INFO"/>
+        <appender-ref ref="WARN"/>
     </root>
 
 </configuration>

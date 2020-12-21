@@ -35,13 +35,11 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     private UserDetailsService userDetailsService;
 
 
-
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         //鉴权
         String authHeader = request.getHeader(tokenHeader);
-        log.info("authHeader {}",authHeader);
+        log.info("authHeader {}", authHeader);
         if (authHeader != null && authHeader.startsWith(jwtTokenUtil.getTokenHead())) {
             // 提取去 token
             String authToken = authHeader.substring(jwtTokenUtil.getTokenHead().length());

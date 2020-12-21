@@ -20,11 +20,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GlobalExceptionHandler {
 
 
-
     @ResponseBody
     @ExceptionHandler(value = ApiException.class)
-    public BasicsResult handleValidException(ApiException e){
-        if(e.getResultCode() != null){
+    public BasicsResult handleValidException(ApiException e) {
+        if (e.getResultCode() != null) {
             return BasicsResult.failed(e.getResultCode());
         }
         return BasicsResult.failed(e.getMessage());
@@ -32,20 +31,21 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获 参数校验失败
+     *
      * @return
      */
     @ResponseBody
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public BasicsResult handleValidException(MethodArgumentNotValidException e){
+    public BasicsResult handleValidException(MethodArgumentNotValidException e) {
         BindingResult bindingResult = e.getBindingResult();
         String message = null;
         if (bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
             if (fieldError != null) {
-                message = fieldError.getField()+fieldError.getDefaultMessage();
+                message = fieldError.getField() + fieldError.getDefaultMessage();
             }
         }
-        log.info("message:{}",message);
+        log.info("message:{}", message);
 
         return CommonResult.validateFailed(message);
     }

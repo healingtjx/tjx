@@ -59,14 +59,14 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
     public UmsAdmin getAdminByUsernameAndCache(String username) {
         //如果缓存有就直接返回缓存
         UmsAdmin admin = iUmsAdminCacheService.getAdmin(username);
-        if(admin != null){
+        if (admin != null) {
             return admin;
         }
         //如果没有就重新查询
         QueryWrapper<UmsAdmin> queryWrapper = new QueryWrapper<UmsAdmin>()
-                .eq("username",username);
+                .eq("username", username);
         UmsAdmin umsAdmin = umsAdminMapper.selectOne(queryWrapper);
-        if(umsAdmin != null){
+        if (umsAdmin != null) {
             //查到就缓存下来
             iUmsAdminCacheService.setAdmin(umsAdmin);
         }
@@ -77,15 +77,15 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
     public CommonResult<TokenResult> login(UmsAdminLoginParam umsAdminLoginParam) {
         //用户名查询是否存在
         UmsAdmin umsAdmin = this.getAdminByUsernameAndCache(umsAdminLoginParam.getUsername());
-        if(umsAdmin == null){
+        if (umsAdmin == null) {
             Asserts.fail("用户名不存在");
         }
         String salt = umsAdmin.getSalt();
-        String password = SecureUtil.md5(umsAdminLoginParam.getPassword()+salt);
-        if(!password.equals(umsAdmin.getPassword())){
+        String password = SecureUtil.md5(umsAdminLoginParam.getPassword() + salt);
+        if (!password.equals(umsAdmin.getPassword())) {
             Asserts.fail("密码错误");
         }
-        log.debug("umsAdmin:{}",JSONUtil.toJsonStr(umsAdmin));
+        log.debug("umsAdmin:{}", JSONUtil.toJsonStr(umsAdmin));
         //生成 token
         String token = jwtTokenUtil.generateToken(new AdminUserDetails(umsAdmin));
         TokenResult tokenResult = new TokenResult();
@@ -100,7 +100,7 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
     public UserDetails loadUserByUsername(String username) {
         //用户名查询是否存在
         UmsAdmin umsAdmin = this.getAdminByUsernameAndCache(username);
-        if(umsAdmin != null){
+        if (umsAdmin != null) {
             //实例化 user对象
             return new AdminUserDetails(umsAdmin);
         }
@@ -110,20 +110,20 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
     @Override
     public CommonResult<AdminInfoResult> userInfo(String username) {
         UmsAdmin umsAdmin = this.getAdminByUsernameAndCache(username);
-        if(umsAdmin == null){
+        if (umsAdmin == null) {
             //返回登陆过期
             Asserts.fail(ResultCode.UNAUTHORIZED);
         }
         //获取 当前用户关联的角色
         //如果没有就重新查询
         List<UmsRole> umsRoles = umsRoleMapper.selectRoleByAdminId(umsAdmin.getId());
-        if(umsRoles.size() == 0){
+        if (umsRoles.size() == 0) {
             Asserts.fail("当前账号没有赋予角色");
         }
         //获取用户授权菜单
         List<Long> ids = umsRoles.stream().map(UmsRole::getId).collect(Collectors.toList());
         List<UmsMenu> umsMenus = umsMenuMapper.selectMenuByRoleIds(ids);
-        if(umsMenus.size() == 0){
+        if (umsMenus.size() == 0) {
             Asserts.fail("当前角色没有菜单权限");
         }
         //获取角色
