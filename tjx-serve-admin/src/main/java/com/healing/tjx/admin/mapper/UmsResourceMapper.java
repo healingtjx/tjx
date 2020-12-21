@@ -1,7 +1,7 @@
 package com.healing.tjx.admin.mapper;
 
-import com.healing.tjx.admin.entity.UmsResource;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.healing.tjx.admin.entity.UmsResource;
 
 /**
  * <p>

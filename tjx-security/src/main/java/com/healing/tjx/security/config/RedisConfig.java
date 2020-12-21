@@ -1,10 +1,7 @@
 package com.healing.tjx.security.config;
 
 import com.healing.tjx.common.config.BaseRedisConfig;
-import com.healing.tjx.common.service.RedisService;
-import com.healing.tjx.common.service.impl.RedisServiceImpl;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
