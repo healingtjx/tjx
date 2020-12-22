@@ -7,6 +7,9 @@ import org.slf4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @作者: tjx
@@ -46,7 +49,8 @@ public class ParametersUtil {
      *
      * @param request
      */
-    public static void showRequestParams(HttpServletRequest request, Logger logger) {
+    public static void showRequestParams(HttpServletRequest request, JoinPoint joinPoint, Logger logger) {
+
         //获取ip
         String currentURL = request.getRequestURI();
         String ctxPath = request.getContextPath();
@@ -57,19 +61,11 @@ public class ParametersUtil {
         logger.info("接口地址:" + targetURL);
         logger.info("ip地址:" + ip);
         //展示请求参数
-        Enumeration paramNames = request.getParameterNames();
-        while (paramNames.hasMoreElements()) {
-            String paramName = (String) paramNames.nextElement();
-
-            String[] paramValues = request.getParameterValues(paramName);
-            if (paramValues.length == 1) {
-                String paramValue = paramValues[0];
-                if (paramValue.length() != 0) {
-                    logger.info("{} : {}", paramName, paramValue);
-                }
-            }
+        Object[] paramValues = joinPoint.getArgs();
+        String[] paramNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
+        for (int i = 0; i < paramNames.length; i++) {
+            logger.debug("{} : {}", paramNames[i], paramValues[i]);
         }
-
     }
 
 

@@ -30,7 +30,7 @@ public class ComputeHandleBusinessTimeAspect {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest();
         //展示请求相关数据
-        ParametersUtil.showRequestParams(request, log);
+        ParametersUtil.showRequestParams(request, joinPoint, log);
         //获取处理开始时间
         long startTime = System.currentTimeMillis();
         Object object = joinPoint.proceed();
