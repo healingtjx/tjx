@@ -21,7 +21,7 @@ import java.security.Principal;
  **/
 @Slf4j
 @RestController
-@RequestMapping("/admin/authentication")
+@RequestMapping("/ums/authentication")
 @Api(tags = "UmsAuthorizationController", description = "后台用户认证管理")
 public class UmsAuthorizationController {
 

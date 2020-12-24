@@ -34,8 +34,20 @@ public class PageResult<T> extends BasicsResult {
      */
     private List<T> list;
 
-
     PageResult(ResultCode code) {
         super(code);
+    }
+
+    /**
+     * 成功返回结果
+     */
+    public static <T> PageResult<T> success(List<T> list) {
+        PageResult<T> result = new PageResult<>(ResultCode.SUCCESS);
+        result.setTotal((long) 20);
+        result.setPageSize(1);
+        result.setTotalPage(1);
+        result.setPageNum(1);
+        result.setList(list);
+        return result;
     }
 }
