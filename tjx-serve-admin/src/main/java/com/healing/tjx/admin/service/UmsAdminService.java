@@ -1,6 +1,7 @@
 package com.healing.tjx.admin.service;
 
 import com.healing.tjx.admin.entity.UmsAdmin;
+import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 
 /**
@@ -11,8 +12,10 @@ import com.healing.tjx.common.api.PageResult;
 public interface UmsAdminService {
 
     /**
-     * 管理员列表
+     * 管理员列表 (支持姓名搜索)
+     * @param pageParam 分页参数
+     * @param name 姓名 用于搜索
      * @return CommonResult<UmsAdmin>
      */
-    PageResult<UmsAdmin> list();
+    PageResult<UmsAdmin> list(PageParam pageParam,String name);
 }

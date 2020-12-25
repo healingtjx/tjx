@@ -2,6 +2,8 @@ package com.healing.tjx;
 
 
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.healing.tjx.admin.AdminApplication;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
@@ -29,11 +31,18 @@ public class UmsAdminMapperTests {
 
 
     @Test
-    public void testAdd() {
-        UmsAdmin umsAdmin = umsAdminMapper.selectById(1);
-        log.info(JSONUtil.toJsonStr(umsAdmin));
+    public void testList() {
+        Page<UmsAdmin> page = new Page<>(3, 1, true);
+        IPage<UmsAdmin> selectPage = umsAdminMapper.selectPage(page, null);
+        log.info(JSONUtil.toJsonStr(selectPage));
 
     }
 
+    @Test
+    public void testCustomList() {
+        Page<UmsAdmin> page = new Page<>(1, 10, true);
+        IPage<UmsAdmin> selectPage = umsAdminMapper.selectPageVo(page, 10);
+        log.info(JSONUtil.toJsonStr(selectPage));
+    }
 
 }

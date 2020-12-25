@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
  * @描述:
  * @创建时间: 创建于14:29 2020-12-16
  **/
+@SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 @Slf4j
 @Service
 public class UmsAdminCacheServiceImpl implements IUmsAdminCacheService {

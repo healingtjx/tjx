@@ -1,7 +1,10 @@
 package com.healing.tjx.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.healing.tjx.admin.entity.UmsAdmin;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -13,4 +16,11 @@ import com.healing.tjx.admin.entity.UmsAdmin;
  */
 public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 
+    /**
+     * 测试
+     * @param page
+     * @param id
+     * @return
+     */
+    IPage<UmsAdmin> selectPageVo(Page<?> page,@Param("id") Integer id);
 }
