@@ -1,5 +1,6 @@
 package com.healing.tjx.common.api;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,15 +17,15 @@ public class PageResult<T> extends BasicsResult {
     /**
      * 当前页码
      */
-    private Integer pageNum;
+    private Long pageNum;
     /**
      * 每页数量
      */
-    private Integer pageSize;
+    private Long pageSize;
     /**
      * 总页数
      */
-    private Integer totalPage;
+    private Long totalPage;
     /**
      * 总条数
      */
@@ -39,15 +40,20 @@ public class PageResult<T> extends BasicsResult {
     }
 
     /**
-     * 成功返回结果
+     * 封住 查询结果
+     *
+     * @param iPage myabatis-plus 查询处理的结果
      */
-    public static <T> PageResult<T> success(List<T> list) {
+    public static <T> PageResult<T> success(IPage<T> iPage) {
         PageResult<T> result = new PageResult<>(ResultCode.SUCCESS);
-        result.setTotal((long) 20);
-        result.setPageSize(1);
-        result.setTotalPage(1);
-        result.setPageNum(1);
-        result.setList(list);
+        result.setTotal(iPage.getTotal());
+        result.setPageSize(iPage.getSize());
+        //计算 总页数 公式 total/size 如果不被整除就 +1
+        result.setTotalPage(iPage.getTotal() % iPage.getSize() == 0 ? iPage.getTotal() / iPage.getSize() : iPage.getTotal() / iPage.getSize() + 1);
+        result.setPageNum(iPage.getCurrent());
+        result.setList(iPage.getRecords());
         return result;
     }
+
+
 }

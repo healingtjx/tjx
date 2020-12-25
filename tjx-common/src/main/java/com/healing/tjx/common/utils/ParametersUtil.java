@@ -52,19 +52,19 @@ public class ParametersUtil {
     public static void showRequestParams(HttpServletRequest request, JoinPoint joinPoint, Logger logger) {
 
         //获取ip
-        String currentURL = request.getRequestURI();
+        String currentUrl = request.getRequestURI();
         String ctxPath = request.getContextPath();
-        String targetURL = currentURL.substring(ctxPath.length() + 1);
+        String targetUrl = currentUrl.substring(ctxPath.length() + 1);
         String ip = WebUtil.getRemoteAddrIp(request);
         //展示请求基本信息
         logger.info("------------------------------请求开始------------------------------");
-        logger.info("接口地址:" + targetURL);
+        logger.info("接口地址:" + targetUrl);
         logger.info("ip地址:" + ip);
         //展示请求参数
         Object[] paramValues = joinPoint.getArgs();
         String[] paramNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
         for (int i = 0; i < paramNames.length; i++) {
-            logger.debug("{} : {}", paramNames[i], paramValues[i]);
+            logger.debug("{} : {}", paramNames[i], JSONUtil.toJsonStr(paramValues[i]));
         }
     }
 
