@@ -3,6 +3,7 @@ package com.healing.tjx.common.exception;
 import com.healing.tjx.common.api.BasicsResult;
 import com.healing.tjx.common.api.CommonResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -35,8 +36,8 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ResponseBody
-    @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    public BasicsResult handleValidException(MethodArgumentNotValidException e) {
+    @ExceptionHandler(value = BindException.class)
+    public BasicsResult handleValidException(BindException e) {
         BindingResult bindingResult = e.getBindingResult();
         String message = null;
         if (bindingResult.hasErrors()) {

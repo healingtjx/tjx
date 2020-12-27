@@ -11,9 +11,8 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @作者: tjx
@@ -32,9 +31,7 @@ public class UmsAdminController {
     @ApiOperation(value = "管理员列表")
     @ApiImplicitParam(paramType = "query", name = "name", value = "姓名搜索", dataType = "String")
     @GetMapping("/list")
-    public PageResult<UmsAdmin> list(PageParam page, String name) {
-        log.debug("page:{}", JSONUtil.toJsonStr(page));
-        log.debug("name:{}", name);
+    public PageResult<UmsAdmin> list(@Validated PageParam page,String name) {
         return umsAdminService.list(page,name);
     }
 

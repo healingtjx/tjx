@@ -3,32 +3,32 @@ package com.healing.tjx.common.api;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 /**
  * @作者: tjx
  * @描述: 分页请求参数 (全局统一)
  * @创建时间: 创建于10:34 2020-12-25
  **/
-@Getter
-@Setter
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class PageParam {
 
     /**
      * 条数
      */
-    @NotEmpty
+    @NotNull
     @ApiModelProperty(value = "条数", required = true)
-    private int pageSize;
+    private Integer pageSize;
     /**
      * 页数
      */
-    @NotEmpty
+    @NotNull
     @ApiModelProperty(value = "页数", required = true)
-    private int pageIndex;
+    private Integer pageIndex;
 
     /**
      * 生成 用于mybatis-plus 使用的参数
