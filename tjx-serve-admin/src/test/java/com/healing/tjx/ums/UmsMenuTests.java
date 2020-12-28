@@ -34,6 +34,11 @@ public class UmsMenuTests {
         ids.add(2l);
         List<UmsMenu> umsMenus = umsMenuMapper.selectMenuByRoleIds(ids);
         log.debug(JSONUtil.toJsonStr(umsMenus));
+    }
+
+
+    @Test
+    public void testList(){
 
     }
 }

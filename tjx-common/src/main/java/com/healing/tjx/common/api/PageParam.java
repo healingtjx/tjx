@@ -17,6 +17,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper = false)
 public class PageParam {
 
+
     /**
      * 条数
      */
@@ -29,6 +30,8 @@ public class PageParam {
     @NotNull
     @ApiModelProperty(value = "页数", required = true)
     private Integer pageIndex;
+
+
 
     /**
      * 生成 用于mybatis-plus 使用的参数

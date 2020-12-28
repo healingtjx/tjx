@@ -9,10 +9,18 @@ import com.healing.tjx.common.api.ResultCode;
  **/
 public class Asserts {
 
+    /**
+     * 业务层错误返回
+     * @param message
+     */
     public static void fail(String message) {
         throw new ApiException(message);
     }
 
+    /**
+     * 返回指定错误
+     * @param errorCode
+     */
     public static void fail(ResultCode errorCode) {
         throw new ApiException(errorCode);
     }
