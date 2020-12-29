@@ -1,19 +1,18 @@
 package com.healing.tjx.admin.controller;
 
+import cn.hutool.core.util.StrUtil;
+import com.healing.tjx.admin.dto.UmsAdminChangeParam;
+import com.healing.tjx.admin.dto.UmsAdminUpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.service.UmsAdminService;
-import com.healing.tjx.common.api.PageParam;
-import com.healing.tjx.common.api.PageResult;
-import com.healing.tjx.common.api.SortParam;
+import com.healing.tjx.common.api.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @作者: tjx
@@ -32,8 +31,35 @@ public class UmsAdminController {
     @ApiOperation(value = "管理员列表")
     @ApiImplicitParam(paramType = "query", name = "name", value = "姓名搜索", dataType = "String")
     @GetMapping("/list")
-    public PageResult<UmsAdmin> list(@Validated PageParam page, @Validated SortParam sortParam ,String name) {
-        return umsAdminService.list(page,sortParam,name);
+    public PageResult<UmsAdmin> list(@Validated PageParam page, SortParam sortParam, String name) {
+        return umsAdminService.list(page, sortParam, name);
     }
+
+
+    @ApiOperation(value = "新增管理员/修改管理员")
+    @PostMapping("/change")
+    public BasicsResult change(@Validated @RequestBody UmsAdminChangeParam umsAdminChangeParam) {
+        //手动校验 新增情况下必须要有密码
+        if (umsAdminChangeParam.getId() == null) {
+            if (StrUtil.isEmpty(umsAdminChangeParam.getPassword())) {
+                return CommonResult.validateFailed("新增:password不能为空");
+            }
+        }
+        return umsAdminService.change(umsAdminChangeParam);
+    }
+
+
+    @ApiOperation(value = "修改管理员状态")
+    @PostMapping("/updateStatus")
+    public CommonResult<Long> list(@Validated @RequestBody UmsAdminUpdateStatusParam umsAdminUpdateStatusParam) {
+        return umsAdminService.updateUmsAdminStatus(umsAdminUpdateStatusParam);
+    }
+
+    @ApiOperation(value = "删除管理员")
+    @PostMapping("/delete")
+    public CommonResult delete(int id) {
+        return umsAdminService.delete(id);
+    }
+
 
 }

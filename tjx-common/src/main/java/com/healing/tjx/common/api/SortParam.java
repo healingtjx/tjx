@@ -4,8 +4,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.validation.constraints.NotNull;
-
 /**
  * @作者: tjx
  * @描述: 用于数据排序
@@ -16,10 +14,8 @@ import javax.validation.constraints.NotNull;
 public class SortParam {
 
     @ApiModelProperty(value = "排序字段")
-    @NotNull
-    private String key;
+    private String sortKey;
 
     @ApiModelProperty(value = "是否降序(false 升序|true 降序)")
-    @NotNull
-    private Boolean isDescen;
+    private Boolean sortDescen;
 }

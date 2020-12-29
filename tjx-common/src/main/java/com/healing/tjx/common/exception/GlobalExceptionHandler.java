@@ -38,7 +38,27 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = BindException.class)
     public BasicsResult handleValidException(BindException e) {
-        BindingResult bindingResult = e.getBindingResult();
+        return handleValidException(e.getBindingResult());
+    }
+
+    /**
+     * 捕获 参数校验失败
+     *
+     * @return
+     */
+    @ResponseBody
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public BasicsResult handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+        return handleValidException(e.getBindingResult());
+    }
+
+    /**
+     * 处理 异常返回
+     *
+     * @param bindingResult
+     * @return
+     */
+    private BasicsResult handleValidException(BindingResult bindingResult) {
         String message = null;
         if (bindingResult.hasErrors()) {
             FieldError fieldError = bindingResult.getFieldError();
@@ -50,4 +70,6 @@ public class GlobalExceptionHandler {
 
         return CommonResult.validateFailed(message);
     }
+
+
 }
