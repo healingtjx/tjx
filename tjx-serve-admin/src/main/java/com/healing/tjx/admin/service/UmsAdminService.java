@@ -1,7 +1,7 @@
 package com.healing.tjx.admin.service;
 
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
-import com.healing.tjx.admin.dto.UmsAdminUpdateStatusParam;
+import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
@@ -49,5 +49,5 @@ public interface UmsAdminService {
      * @param statusParam 修改参数
      * @return CommonResult<Integer> 用户id
      */
-    CommonResult<Long> updateUmsAdminStatus(UmsAdminUpdateStatusParam statusParam);
+    CommonResult<Long> updateUmsAdminStatus(UpdateStatusParam statusParam);
 }

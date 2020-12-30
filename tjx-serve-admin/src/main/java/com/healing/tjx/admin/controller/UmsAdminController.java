@@ -2,7 +2,7 @@ package com.healing.tjx.admin.controller;
 
 import cn.hutool.core.util.StrUtil;
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
-import com.healing.tjx.admin.dto.UmsAdminUpdateStatusParam;
+import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.service.UmsAdminService;
 import com.healing.tjx.common.api.*;
@@ -51,7 +51,7 @@ public class UmsAdminController {
 
     @ApiOperation(value = "修改管理员状态")
     @PostMapping("/updateStatus")
-    public CommonResult<Long> list(@Validated @RequestBody UmsAdminUpdateStatusParam umsAdminUpdateStatusParam) {
+    public CommonResult<Long> list(@Validated @RequestBody UpdateStatusParam umsAdminUpdateStatusParam) {
         return umsAdminService.updateUmsAdminStatus(umsAdminUpdateStatusParam);
     }
 

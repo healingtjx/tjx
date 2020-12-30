@@ -1,7 +1,7 @@
 package com.healing.tjx.admin.service.impl;
 
 import com.healing.tjx.admin.entity.UmsAdmin;
-import com.healing.tjx.admin.service.IUmsAdminCacheService;
+import com.healing.tjx.admin.service.UmsAdminCacheService;
 import com.healing.tjx.common.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @SuppressWarnings("AlibabaLowerCamelCaseVariableNaming")
 @Slf4j
 @Service
-public class UmsAdminCacheServiceImpl implements IUmsAdminCacheService {
+public class UmsAdminCacheServiceImpl implements UmsAdminCacheService {
 
 
     @Value("${redis.database}")

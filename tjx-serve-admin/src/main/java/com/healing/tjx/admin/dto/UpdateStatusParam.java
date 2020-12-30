@@ -9,12 +9,12 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @作者: tjx
- * @描述: 修改管理员状态
+ * @描述: 修改状态
  * @创建时间: 创建于11:20 2020-12-29
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class UmsAdminUpdateStatusParam {
+public class UpdateStatusParam {
 
     @NotNull
     @ApiModelProperty(value = "修改id", required = true)

@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  *
  * @author tjx
  */
-public interface IUmsAuthenticationService {
+public interface UmsAuthenticationService {
 
 
     /**

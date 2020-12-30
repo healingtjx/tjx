@@ -1,6 +1,6 @@
 package com.healing.tjx.admin.config;
 
-import com.healing.tjx.admin.service.IUmsAuthenticationService;
+import com.healing.tjx.admin.service.UmsAuthenticationService;
 import com.healing.tjx.security.config.SecurityConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class AdminSecurityConfig extends SecurityConfig {
 
     @Autowired
-    private IUmsAuthenticationService authenticationService;
+    private UmsAuthenticationService authenticationService;
 
 
     /**

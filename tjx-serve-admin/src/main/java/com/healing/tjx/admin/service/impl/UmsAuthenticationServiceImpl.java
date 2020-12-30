@@ -13,8 +13,8 @@ import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
 import com.healing.tjx.admin.mapper.UmsMenuMapper;
 import com.healing.tjx.admin.mapper.UmsRoleMapper;
-import com.healing.tjx.admin.service.IUmsAdminCacheService;
-import com.healing.tjx.admin.service.IUmsAuthenticationService;
+import com.healing.tjx.admin.service.UmsAdminCacheService;
+import com.healing.tjx.admin.service.UmsAuthenticationService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.ResultCode;
 import com.healing.tjx.common.exception.Asserts;
@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
  */
 @Slf4j
 @Service
-public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
+public class UmsAuthenticationServiceImpl implements UmsAuthenticationService {
 
 
     @Autowired
@@ -52,7 +52,7 @@ public class UmsAuthenticationServiceImpl implements IUmsAuthenticationService {
 
 
     @Autowired
-    private IUmsAdminCacheService iUmsAdminCacheService;
+    private UmsAdminCacheService iUmsAdminCacheService;
 
 
     @Override

@@ -7,7 +7,7 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
-import com.healing.tjx.admin.dto.UmsAdminUpdateStatusParam;
+import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
 import com.healing.tjx.admin.service.UmsAdminService;
@@ -130,7 +130,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     }
 
     @Override
-    public CommonResult<Long> updateUmsAdminStatus(UmsAdminUpdateStatusParam statusParam) {
+    public CommonResult<Long> updateUmsAdminStatus(UpdateStatusParam statusParam) {
         UmsAdmin umsAdmin = new UmsAdmin();
         umsAdmin.setId(statusParam.getId().longValue());
         umsAdmin.setStatus(statusParam.getStatus());

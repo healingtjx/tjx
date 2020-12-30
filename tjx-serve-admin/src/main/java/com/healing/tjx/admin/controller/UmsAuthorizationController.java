@@ -3,7 +3,7 @@ package com.healing.tjx.admin.controller;
 import com.healing.tjx.admin.dto.AdminInfoResult;
 import com.healing.tjx.admin.dto.TokenResult;
 import com.healing.tjx.admin.dto.UmsAdminLoginParam;
-import com.healing.tjx.admin.service.IUmsAuthenticationService;
+import com.healing.tjx.admin.service.UmsAuthenticationService;
 import com.healing.tjx.common.api.CommonResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +27,7 @@ public class UmsAuthorizationController {
 
 
     @Autowired
-    private IUmsAuthenticationService iUmsAuthenticationService;
+    private UmsAuthenticationService iUmsAuthenticationService;
 
 
     @ApiOperation(value = "登录接口【返回token】")

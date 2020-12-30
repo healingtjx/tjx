@@ -7,7 +7,7 @@ import com.healing.tjx.admin.entity.UmsAdmin;
  * @描述: 后台用户相关缓存操作
  * @创建时间: 创建于16:46 2020-12-15
  **/
-public interface IUmsAdminCacheService {
+public interface UmsAdminCacheService {
 
     /**
      * 用户登陆后缓存用户信息(24小时)
