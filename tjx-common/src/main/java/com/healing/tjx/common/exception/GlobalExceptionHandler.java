@@ -20,7 +20,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
+    /**
+     * 处理程序运行时 未知异常
+     * @return
+     */
+    @ResponseBody
+    @ExceptionHandler(value = Exception.class)
+    public BasicsResult handelException(Exception e){
+        log.error("message:{}", e.getMessage());
+        return BasicsResult.failed(e.getMessage());
+    }
 
+    /**
+     * 处理 接口异常
+     * @param e
+     * @return
+     */
     @ResponseBody
     @ExceptionHandler(value = ApiException.class)
     public BasicsResult handleValidException(ApiException e) {
