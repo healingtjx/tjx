@@ -56,11 +56,11 @@ public class UmsMenuServiceImpl implements UmsMenuService {
         if (umsMenuChangeParam.getId() != null) {
             //判断是否有下级菜单
             UmsMenu oldMmsMenu = umsMenuMapper.selectById(umsMenuChangeParam.getId());
-            if(oldMmsMenu == null){
+            if (oldMmsMenu == null) {
                 Asserts.fail("找不到您要修改的菜单");
             }
             //如果需要修改pid
-            if(oldMmsMenu.getParentId().intValue() != umsMenu.getParentId()){
+            if (oldMmsMenu.getParentId().intValue() != umsMenu.getParentId()) {
                 //判断是否还有下级菜单
                 //查询条件
                 LambdaQueryWrapper<UmsMenu> queryWrapper = new LambdaQueryWrapper<>();

@@ -38,7 +38,7 @@ public class UmsMenuTests {
 
 
     @Test
-    public void testList(){
+    public void testList() {
 
     }
 }

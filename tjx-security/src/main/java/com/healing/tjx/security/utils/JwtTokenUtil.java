@@ -19,8 +19,8 @@ import java.util.Map;
 @Slf4j
 public class JwtTokenUtil {
 
-    private static final String CLAIM_KEY_USERNAME = "sub" ;
-    private static final String CLAIM_KEY_CREATED = "created" ;
+    private static final String CLAIM_KEY_USERNAME = "sub";
+    private static final String CLAIM_KEY_CREATED = "created";
     @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.expiration}")

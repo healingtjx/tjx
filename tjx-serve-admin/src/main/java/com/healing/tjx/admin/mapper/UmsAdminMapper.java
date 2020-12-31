@@ -18,9 +18,10 @@ public interface UmsAdminMapper extends BaseMapper<UmsAdmin> {
 
     /**
      * 测试
+     *
      * @param page
      * @param id
      * @return
      */
-    IPage<UmsAdmin> selectPageVo(Page<?> page,@Param("id") Integer id);
+    IPage<UmsAdmin> selectPageVo(Page<?> page, @Param("id") Integer id);
 }

@@ -26,7 +26,7 @@ public class UmsMenuChangeParam {
     private String name;
 
     @ApiModelProperty(value = "前端标题")
-    @Length(min = 1,max = 20, message = "前端标题 只能在 1 - 20个字符之间")
+    @Length(min = 1, max = 20, message = "前端标题 只能在 1 - 20个字符之间")
     private String title;
 
     @ApiModelProperty(value = "前端图标")

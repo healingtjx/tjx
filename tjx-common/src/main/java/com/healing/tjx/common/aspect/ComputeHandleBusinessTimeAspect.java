@@ -1,7 +1,6 @@
 package com.healing.tjx.common.aspect;
 
 import com.healing.tjx.common.utils.ParametersUtil;
-import com.healing.tjx.common.utils.WebUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

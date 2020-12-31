@@ -18,11 +18,11 @@ public class UmsRoleChangeParam {
     private Integer id;
 
     @ApiModelProperty(value = "名称")
-    @Length(min = 3 ,max = 20,message = "名称 只能在 3 - 20个字符之间")
+    @Length(min = 3, max = 20, message = "名称 只能在 3 - 20个字符之间")
     private String name;
 
     @ApiModelProperty(value = "描述")
-    @Length(max = 500,message = "描述必须小于500个字符")
+    @Length(max = 500, message = "描述必须小于500个字符")
     private String description;
 
 

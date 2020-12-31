@@ -11,6 +11,7 @@ public class Asserts {
 
     /**
      * 业务层错误返回
+     *
      * @param message
      */
     public static void fail(String message) {
@@ -19,6 +20,7 @@ public class Asserts {
 
     /**
      * 返回指定错误
+     *
      * @param errorCode
      */
     public static void fail(ResultCode errorCode) {

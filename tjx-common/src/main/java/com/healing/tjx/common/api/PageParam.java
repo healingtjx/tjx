@@ -32,7 +32,6 @@ public class PageParam {
     private Integer pageIndex;
 
 
-
     /**
      * 生成 用于mybatis-plus 使用的参数
      *

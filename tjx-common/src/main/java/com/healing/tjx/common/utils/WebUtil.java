@@ -34,6 +34,6 @@ public class WebUtil {
     private static String getHeader(HttpServletRequest request, String headName) {
         String value = request.getHeader(headName);
         return (StrUtil.isNotBlank(value) && !"unknown"
-                .equalsIgnoreCase(value)) ? value : "" ;
+                .equalsIgnoreCase(value)) ? value : "";
     }
 }

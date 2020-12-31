@@ -1,6 +1,5 @@
 package com.healing.tjx.admin.controller;
 
-import com.healing.tjx.admin.dto.UmsAdminChangeParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsRole;

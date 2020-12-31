@@ -22,11 +22,11 @@ public class UmsAdminChangeParam {
     private String password;
 
     @ApiModelProperty(value = "账号", required = true)
-    @Length(min = 3 ,max = 20,message = "账号 只能在 3 - 20个字符之间")
+    @Length(min = 3, max = 20, message = "账号 只能在 3 - 20个字符之间")
     private String username;
 
     @ApiModelProperty(value = "昵称", required = true)
-    @Length(min = 3 ,max = 20,message = "昵称 只能在 3 - 20个字符之间")
+    @Length(min = 3, max = 20, message = "昵称 只能在 3 - 20个字符之间")
     private String nickName;
 
     @ApiModelProperty(value = "邮箱")
