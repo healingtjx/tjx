@@ -22,7 +22,7 @@ public class UpdateStatusParam {
 
     @NotNull
     @Range(min = 0, max = 1)
-    @ApiModelProperty(value = "状态 0 禁用1 开启", required = true)
+    @ApiModelProperty(value = "状态 0 禁用 1 开启", required = true)
     private Integer status;
 
 

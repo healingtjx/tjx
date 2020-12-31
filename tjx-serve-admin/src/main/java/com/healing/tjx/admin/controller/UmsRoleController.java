@@ -52,7 +52,6 @@ public class UmsRoleController {
         return umsRoleService.change(umsRoleChangeParam);
     }
 
-
     @ApiOperation(value = "删除角色")
     @PostMapping("/delete")
     public CommonResult delete(int id) {
