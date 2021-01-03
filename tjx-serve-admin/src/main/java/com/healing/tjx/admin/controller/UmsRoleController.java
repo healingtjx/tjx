@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/ums/role")
-@Api(tags = "UmsRoleController", description = "后台角色管理")
+@Api(tags = "UmsRoleController", value = "后台角色管理")
 public class UmsRoleController {
 
 

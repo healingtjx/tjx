@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/ums/admin")
-@Api(tags = "UmsAdminController", description = "管理用户模块")
+@Api(tags = "UmsAdminController", value = "管理用户模块")
 public class UmsAdminController {
 
     @Autowired

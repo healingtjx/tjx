@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/ums/menu")
-@Api(tags = "UmsMenuController", description = "后台菜单管理")
+@Api(tags = "UmsMenuController", value = "后台菜单管理")
 public class UmsMenuController {
 
 
