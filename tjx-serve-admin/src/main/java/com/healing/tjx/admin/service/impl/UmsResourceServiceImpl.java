@@ -5,21 +5,17 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.healing.tjx.admin.dto.UmsResourceChangeParam;
 import com.healing.tjx.admin.dto.UmsResourcePageParam;
-import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.entity.UmsResource;
 import com.healing.tjx.admin.entity.UmsResourceCategory;
-import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.admin.mapper.UmsResourceCategoryMapper;
 import com.healing.tjx.admin.mapper.UmsResourceMapper;
 import com.healing.tjx.admin.service.UmsResourceService;
 import com.healing.tjx.common.api.CommonResult;
-import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 import com.healing.tjx.common.exception.Asserts;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
@@ -67,7 +63,7 @@ public class UmsResourceServiceImpl implements UmsResourceService {
             LambdaQueryWrapper<UmsResourceCategory> queryWrapper = new LambdaQueryWrapper<>();
             queryWrapper.eq(UmsResourceCategory::getId, categoryId.longValue());
             Integer count = umsResourceCategoryMapper.selectCount(queryWrapper);
-            if(count == 0){
+            if (count == 0) {
                 Asserts.fail("检查CategoryId 不存在");
             }
 

@@ -1,9 +1,7 @@
 package com.healing.tjx.admin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.healing.tjx.admin.dto.UmsResourcePageParam;
 import com.healing.tjx.admin.entity.UmsResource;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -14,7 +12,6 @@ import org.apache.ibatis.annotations.Param;
  * @since 2020-12-11
  */
 public interface UmsResourceMapper extends BaseMapper<UmsResource> {
-
 
 
 }

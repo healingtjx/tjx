@@ -2,10 +2,8 @@ package com.healing.tjx.admin.service;
 
 import com.healing.tjx.admin.dto.UmsResourceChangeParam;
 import com.healing.tjx.admin.dto.UmsResourcePageParam;
-import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.entity.UmsResource;
 import com.healing.tjx.common.api.CommonResult;
-import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 
 /**

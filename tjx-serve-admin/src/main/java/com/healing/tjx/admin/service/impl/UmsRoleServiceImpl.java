@@ -45,8 +45,8 @@ public class UmsRoleServiceImpl implements UmsRoleService {
             queryWrapper.like(UmsRole::getName, name);
         }
         //执行查询
-        IPage<UmsRole> umsRoleIPage = umsRoleMapper.selectPage(pageParam.generatePagination(), queryWrapper);
-        return PageResult.success(umsRoleIPage);
+        IPage<UmsRole> selectPage = umsRoleMapper.selectPage(pageParam.generatePagination(), queryWrapper);
+        return PageResult.success(selectPage);
     }
 
     @Override
