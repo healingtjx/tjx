@@ -2,30 +2,42 @@ package com.healing.tjx.admin.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.healing.tjx.admin.dto.AllocResult;
+import com.healing.tjx.admin.dto.TreeResult;
 import com.healing.tjx.admin.dto.UmsMenuChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsMenu;
+import com.healing.tjx.admin.entity.UmsRoleMenuRelation;
 import com.healing.tjx.admin.mapper.UmsMenuMapper;
+import com.healing.tjx.admin.mapper.UmsRoleMenuRelationMapper;
 import com.healing.tjx.admin.service.UmsMenuService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 import com.healing.tjx.common.exception.Asserts;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @作者: tjx
  * @描述: 菜单管理
  * @创建时间: 创建于10:22 2020-12-31
  **/
+@Slf4j
 @Service
 public class UmsMenuServiceImpl implements UmsMenuService {
 
     @Resource
     private UmsMenuMapper umsMenuMapper;
+
+    @Resource
+    private UmsRoleMenuRelationMapper umsRoleMenuRelationMapper;
 
 
     @Override
@@ -37,6 +49,63 @@ public class UmsMenuServiceImpl implements UmsMenuService {
         //执行查询
         IPage<UmsMenu> selectPage = umsMenuMapper.selectPage(page.generatePagination(), queryWrapper);
         return PageResult.success(selectPage);
+    }
+
+    @Override
+    public CommonResult<AllocResult> treeList(int roleId) {
+        //查询当前角色对应的权限
+        LambdaQueryWrapper<UmsRoleMenuRelation> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UmsRoleMenuRelation::getRoleId, roleId);
+        List<UmsRoleMenuRelation> relations = umsRoleMenuRelationMapper.selectList(queryWrapper);
+
+        //查询菜单
+        List<UmsMenu> umsMenus = umsMenuMapper.selectList(null);
+        if (umsMenus.size() == 0) {
+            return CommonResult.success(new AllocResult());
+        }
+        //解析菜单
+        List<TreeResult> treeResults = new ArrayList<>();
+        List<UmsMenu> fatherMenuList = umsMenus.stream()
+                .filter(p -> p.getParentId().intValue() == 0)
+                .collect(Collectors.toList());
+        for (UmsMenu menu : fatherMenuList) {
+            TreeResult father = new TreeResult();
+            father.setId(menu.getId().intValue());
+            father.setLabel(menu.getTitle());
+            //解析子菜单
+            List<UmsMenu> sonMenuList = umsMenus.stream()
+                    .filter(p -> p.getParentId().intValue() == menu.getId())
+                    .collect(Collectors.toList());
+            //封装成tree
+            List<TreeResult> children = new ArrayList<>();
+            for (UmsMenu sonMenu : sonMenuList) {
+                TreeResult son = new TreeResult();
+                son.setId(sonMenu.getId().intValue());
+                son.setLabel(sonMenu.getTitle());
+                children.add(son);
+            }
+            father.setChildren(children);
+            treeResults.add(father);
+        }
+        //转化成ids (并且排除 父类菜单id)
+        List<Long> ids = new ArrayList<>();
+        for (UmsRoleMenuRelation relation : relations) {
+            //排除 父类菜单
+            UmsMenu menu = fatherMenuList.stream()
+                    .filter(b -> b.getId().intValue() == relation.getMenuId().intValue())
+                    .findFirst()
+                    .orElse(null);
+            if (menu != null && menu.getParentId().intValue() == 0) {
+                continue;
+            }
+            ids.add(relation.getMenuId());
+        }
+
+        //封装结果
+        AllocResult allocResult = new AllocResult();
+        allocResult.setIds(ids);
+        allocResult.setTree(treeResults);
+        return CommonResult.success(allocResult);
     }
 
     @Override

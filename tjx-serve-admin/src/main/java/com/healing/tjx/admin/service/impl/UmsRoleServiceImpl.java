@@ -3,11 +3,14 @@ package com.healing.tjx.admin.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.healing.tjx.admin.dto.UmsRoleAllocParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsRole;
+import com.healing.tjx.admin.entity.UmsRoleMenuRelation;
 import com.healing.tjx.admin.entity.UmsRolePermissionRelation;
 import com.healing.tjx.admin.mapper.UmsRoleMapper;
+import com.healing.tjx.admin.mapper.UmsRoleMenuRelationMapper;
 import com.healing.tjx.admin.mapper.UmsRolePermissionRelationMapper;
 import com.healing.tjx.admin.service.UmsRoleService;
 import com.healing.tjx.common.api.CommonResult;
@@ -18,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 /**
@@ -35,6 +39,9 @@ public class UmsRoleServiceImpl implements UmsRoleService {
 
     @Resource
     private UmsRolePermissionRelationMapper umsRolePermissionRelationMapper;
+
+    @Resource
+    private UmsRoleMenuRelationMapper umsRoleMenuRelationMapper;
 
     @Override
     public PageResult<UmsRole> list(PageParam pageParam, String name) {
@@ -100,5 +107,22 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         //删除校色
         umsRoleMapper.deleteById(id);
         return CommonResult.success(id);
+    }
+
+    @Override
+    public CommonResult allocMenu(UmsRoleAllocParam allocParam) {
+        //删除之前的
+        LambdaQueryWrapper<UmsRoleMenuRelation> queryWrapper = new LambdaQueryWrapper();
+        queryWrapper.eq(UmsRoleMenuRelation::getRoleId,allocParam.getRoleId());
+        umsRoleMenuRelationMapper.delete(queryWrapper);
+        //重新添加 (这里就不额外写批量接口，没几个数据)
+        Integer[] relationIds = allocParam.getRelationIds();
+        for (Integer relationId : relationIds) {
+            UmsRoleMenuRelation relation = new UmsRoleMenuRelation();
+            relation.setMenuId(relationId.longValue());
+            relation.setRoleId(allocParam.getRoleId().longValue());
+            umsRoleMenuRelationMapper.insert(relation);
+        }
+        return CommonResult.success();
     }
 }

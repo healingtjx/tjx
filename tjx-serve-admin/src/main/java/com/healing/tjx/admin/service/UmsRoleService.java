@@ -1,5 +1,6 @@
 package com.healing.tjx.admin.service;
 
+import com.healing.tjx.admin.dto.UmsRoleAllocParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsRole;
@@ -51,4 +52,14 @@ public interface UmsRoleService {
      */
     @Transactional(rollbackFor = Exception.class)
     CommonResult delete(Integer id);
+
+
+    /**
+     * 给角色赋予菜单权限 （两个以上的修改或者新增需要加上事务）
+     *
+     * @param allocParam
+     * @return CommonResult
+     */
+    @Transactional
+    CommonResult allocMenu(UmsRoleAllocParam allocParam);
 }

@@ -1,5 +1,6 @@
 package com.healing.tjx.admin.service;
 
+import com.healing.tjx.admin.dto.AllocResult;
 import com.healing.tjx.admin.dto.UmsMenuChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsMenu;
@@ -22,6 +23,16 @@ public interface UmsMenuService {
      * @return PageResult<UmsMenu>
      */
     PageResult<UmsMenu> list(PageParam page, int pid);
+
+
+    /**
+     * 角色授权菜单列表
+     *
+     * @param roleId  角色id
+     * @return PageResult<UmsMenu>
+     */
+    CommonResult<AllocResult> treeList(int roleId);
+
 
     /**
      * 新增/修改 列表

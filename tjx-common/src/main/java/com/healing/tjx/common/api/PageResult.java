@@ -40,7 +40,7 @@ public class PageResult<T> extends BasicsResult {
     }
 
     /**
-     * 封住 查询结果
+     * 封装 查询结果
      *
      * @param iPage myabatis-plus 查询处理的结果
      */
@@ -55,5 +55,18 @@ public class PageResult<T> extends BasicsResult {
         return result;
     }
 
+
+    /**
+     * 封装 自定义返回结果
+     *
+     * @param list
+     * @param <T>
+     * @return
+     */
+    public static <T> PageResult<T> success(List<T> list) {
+        PageResult<T> result = new PageResult<>(ResultCode.SUCCESS);
+        result.setList(list);
+        return result;
+    }
 
 }

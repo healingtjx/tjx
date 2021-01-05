@@ -1,5 +1,7 @@
 package com.healing.tjx.admin.controller;
 
+import com.healing.tjx.admin.dto.UmsMenuChangeParam;
+import com.healing.tjx.admin.dto.UmsRoleAllocParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsRole;
@@ -55,6 +57,14 @@ public class UmsRoleController {
     @PostMapping("/delete")
     public CommonResult delete(int id) {
         return umsRoleService.delete(id);
+    }
+
+
+
+    @ApiOperation(value = "给角色赋予菜单权限")
+    @PostMapping("/allocMenu")
+    public CommonResult<Long> allocMenu(@Validated @RequestBody UmsRoleAllocParam allocParam) {
+        return umsRoleService.allocMenu(allocParam);
     }
 
 

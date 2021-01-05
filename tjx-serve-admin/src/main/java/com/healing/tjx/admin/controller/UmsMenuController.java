@@ -1,5 +1,6 @@
 package com.healing.tjx.admin.controller;
 
+import com.healing.tjx.admin.dto.AllocResult;
 import com.healing.tjx.admin.dto.UmsMenuChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsMenu;
@@ -37,6 +38,15 @@ public class UmsMenuController {
     public PageResult<UmsMenu> list(@Validated PageParam page, int pid) {
         return umsMenuService.list(page, pid);
     }
+
+
+    @ApiOperation(value = "角色授权菜单列表")
+    @ApiImplicitParam(paramType = "query", name = "roleId", value = "角色id", dataType = "String", required = true)
+    @GetMapping("/treeList")
+    public CommonResult<AllocResult> treeList(int roleId) {
+        return umsMenuService.treeList(roleId);
+    }
+
 
 
     @ApiOperation(value = "新增/修改 菜单")
