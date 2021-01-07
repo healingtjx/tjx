@@ -3,12 +3,16 @@ package com.healing.tjx.admin.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.healing.tjx.admin.dto.AllocResult;
+import com.healing.tjx.admin.dto.TreeResult;
 import com.healing.tjx.admin.dto.UmsResourceChangeParam;
 import com.healing.tjx.admin.dto.UmsResourcePageParam;
 import com.healing.tjx.admin.entity.UmsResource;
 import com.healing.tjx.admin.entity.UmsResourceCategory;
+import com.healing.tjx.admin.entity.UmsRoleResourceRelation;
 import com.healing.tjx.admin.mapper.UmsResourceCategoryMapper;
 import com.healing.tjx.admin.mapper.UmsResourceMapper;
+import com.healing.tjx.admin.mapper.UmsRoleResourceRelationMapper;
 import com.healing.tjx.admin.service.UmsResourceService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageResult;
@@ -17,6 +21,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @作者: tjx
@@ -28,6 +35,9 @@ public class UmsResourceServiceImpl implements UmsResourceService {
 
     @Resource
     private UmsResourceMapper umsResourceMapper;
+
+    @Resource
+    private UmsRoleResourceRelationMapper umsRoleResourceRelationMapper;
 
     @Resource
     private UmsResourceCategoryMapper umsResourceCategoryMapper;
@@ -51,6 +61,56 @@ public class UmsResourceServiceImpl implements UmsResourceService {
         //执行查询
         IPage<UmsResource> selectPage = umsResourceMapper.selectPage(page.generatePagination(), queryWrapper);
         return PageResult.success(selectPage);
+    }
+
+    @Override
+    public CommonResult<AllocResult> treeList(int roleId) {
+        //查询当前角色对应资源
+        LambdaQueryWrapper<UmsRoleResourceRelation> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UmsRoleResourceRelation::getRoleId, roleId);
+        List<UmsRoleResourceRelation> relations = umsRoleResourceRelationMapper.selectList(queryWrapper);
+
+        //查询资源分类
+        List<UmsResourceCategory> categoryList = umsResourceCategoryMapper.selectList(null);
+
+        //查询资源
+        List<UmsResource> resourceList = umsResourceMapper.selectList(null);
+        if (categoryList.size() == 0 || resourceList.size() == 0) {
+            return CommonResult.success(new AllocResult());
+        }
+
+        //解析资源
+        List<TreeResult> treeResults = new ArrayList<>();
+
+        for (UmsResourceCategory category : categoryList) {
+            TreeResult father = new TreeResult();
+            //资源分类不参与分配(为了防止前端报错，改成负数)
+            father.setId(-category.getId().intValue());
+            father.setLabel(category.getName());
+            //找到匹配等 资源
+            List<UmsResource> collect = resourceList.stream()
+                    .filter(p -> p.getCategoryId().intValue() == category.getId().intValue())
+                    .collect(Collectors.toList());
+
+            //封装成tree
+            List<TreeResult> children = new ArrayList<>();
+            for (UmsResource sonResource : collect) {
+                TreeResult son = new TreeResult();
+                son.setId(sonResource.getId().intValue());
+                son.setLabel(sonResource.getName());
+                children.add(son);
+            }
+            father.setChildren(children);
+            treeResults.add(father);
+        }
+
+        // 转化成ids
+        List<Long> ids = relations.stream().map(UmsRoleResourceRelation::getResourceId).collect(Collectors.toList());
+        //封装结果
+        AllocResult allocResult = new AllocResult();
+        allocResult.setIds(ids);
+        allocResult.setTree(treeResults);
+        return CommonResult.success(allocResult);
     }
 
     @Override

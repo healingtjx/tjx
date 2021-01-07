@@ -62,4 +62,14 @@ public interface UmsRoleService {
      */
     @Transactional
     CommonResult allocMenu(UmsRoleAllocParam allocParam);
+
+
+    /**
+     * 给角色赋予资源权限 （两个以上的修改或者新增需要加上事务）
+     *
+     * @param allocParam
+     * @return CommonResult
+     */
+    @Transactional
+    CommonResult allocResource(UmsRoleAllocParam allocParam);
 }

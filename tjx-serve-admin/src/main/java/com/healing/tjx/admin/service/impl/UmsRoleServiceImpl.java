@@ -9,9 +9,11 @@ import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.admin.entity.UmsRoleMenuRelation;
 import com.healing.tjx.admin.entity.UmsRolePermissionRelation;
+import com.healing.tjx.admin.entity.UmsRoleResourceRelation;
 import com.healing.tjx.admin.mapper.UmsRoleMapper;
 import com.healing.tjx.admin.mapper.UmsRoleMenuRelationMapper;
 import com.healing.tjx.admin.mapper.UmsRolePermissionRelationMapper;
+import com.healing.tjx.admin.mapper.UmsRoleResourceRelationMapper;
 import com.healing.tjx.admin.service.UmsRoleService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
@@ -23,6 +25,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @作者: tjx
@@ -39,6 +45,9 @@ public class UmsRoleServiceImpl implements UmsRoleService {
 
     @Resource
     private UmsRolePermissionRelationMapper umsRolePermissionRelationMapper;
+
+    @Resource
+    private UmsRoleResourceRelationMapper umsRoleResourceRelationMapper;
 
     @Resource
     private UmsRoleMenuRelationMapper umsRoleMenuRelationMapper;
@@ -113,7 +122,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     public CommonResult allocMenu(UmsRoleAllocParam allocParam) {
         //删除之前的
         LambdaQueryWrapper<UmsRoleMenuRelation> queryWrapper = new LambdaQueryWrapper();
-        queryWrapper.eq(UmsRoleMenuRelation::getRoleId,allocParam.getRoleId());
+        queryWrapper.eq(UmsRoleMenuRelation::getRoleId, allocParam.getRoleId());
         umsRoleMenuRelationMapper.delete(queryWrapper);
         //重新添加 (这里就不额外写批量接口，没几个数据)
         Integer[] relationIds = allocParam.getRelationIds();
@@ -122,6 +131,27 @@ public class UmsRoleServiceImpl implements UmsRoleService {
             relation.setMenuId(relationId.longValue());
             relation.setRoleId(allocParam.getRoleId().longValue());
             umsRoleMenuRelationMapper.insert(relation);
+        }
+        return CommonResult.success();
+    }
+
+    @Override
+    public CommonResult allocResource(UmsRoleAllocParam allocParam) {
+        //过滤到 id = -1的
+        List<Integer> ids = Arrays.asList(allocParam.getRelationIds())
+                .stream()
+                .filter(p -> p.intValue() > 0)
+                .collect(Collectors.toList());
+        //删除之前的
+        LambdaQueryWrapper<UmsRoleResourceRelation> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UmsRoleResourceRelation::getRoleId, allocParam.getRoleId());
+        umsRoleResourceRelationMapper.delete(queryWrapper);
+        //重新添加 (这里就不额外写批量接口，没几个数据)
+        for (Integer relationId : ids) {
+            UmsRoleResourceRelation relation = new UmsRoleResourceRelation();
+            relation.setResourceId(relationId.longValue());
+            relation.setRoleId(allocParam.getRoleId().longValue());
+            umsRoleResourceRelationMapper.insert(relation);
         }
         return CommonResult.success();
     }

@@ -28,6 +28,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public BasicsResult handelException(Exception e) {
+        e.printStackTrace();
         log.error("message:{}", e.getMessage());
         return BasicsResult.failed(e.getMessage());
     }
