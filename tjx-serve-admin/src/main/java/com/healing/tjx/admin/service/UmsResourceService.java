@@ -1,5 +1,6 @@
 package com.healing.tjx.admin.service;
 
+import com.healing.tjx.admin.dto.AllocResult;
 import com.healing.tjx.admin.dto.UmsResourceChangeParam;
 import com.healing.tjx.admin.dto.UmsResourcePageParam;
 import com.healing.tjx.admin.entity.UmsResource;
@@ -20,6 +21,15 @@ public interface UmsResourceService {
      * @return PageResult<UmsResource> 资源列表
      */
     PageResult<UmsResource> list(UmsResourcePageParam page);
+
+
+    /**
+     * 角色资源列表
+     *
+     * @param roleId
+     * @return
+     */
+    CommonResult<AllocResult> treeList(int roleId);
 
 
     /**

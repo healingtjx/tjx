@@ -68,4 +68,10 @@ public class UmsRoleController {
     }
 
 
+    @ApiOperation(value = "给角色赋予资源权限")
+    @PostMapping("/allocResource")
+    public CommonResult<Long> allocResource(@Validated @RequestBody UmsRoleAllocParam allocParam) {
+        return umsRoleService.allocResource(allocParam);
+    }
+
 }
