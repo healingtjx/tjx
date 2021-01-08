@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.healing.tjx.admin.AdminApplication;
 import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
+import com.healing.tjx.common.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,6 +31,7 @@ public class UmsAdminMapperTests {
 
     @Resource
     private UmsAdminMapper umsAdminMapper;
+    
 
     @Test
     public void testAll(){
