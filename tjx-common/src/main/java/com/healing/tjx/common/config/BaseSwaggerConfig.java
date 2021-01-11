@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @作者: tjx
- * @描述: 基础的swagger配置
- * @创建时间: 创建于11:01 2020-12-14
+ * @Author: tjx
+ * @Description: 基础的swagger配置
+ * @Date: 创建于11:01 2020-12-14
  **/
 public abstract class BaseSwaggerConfig {
 

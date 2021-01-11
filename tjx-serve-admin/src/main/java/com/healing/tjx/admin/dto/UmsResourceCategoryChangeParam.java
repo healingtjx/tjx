@@ -8,9 +8,9 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.NotNull;
 
 /**
- * @作者: tjx
- * @描述: 资源分类
- * @创建时间: 创建于10:20 2021-01-04
+ * @Author: tjx
+ * @Description: 资源分类
+ * @Date: 创建于10:20 2021-01-04
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

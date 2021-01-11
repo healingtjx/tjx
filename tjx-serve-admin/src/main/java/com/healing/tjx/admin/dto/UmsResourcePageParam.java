@@ -7,9 +7,9 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 /**
- * @作者: tjx
- * @描述: 资源分页查询
- * @创建时间: 创建于14:16 2020-12-18
+ * @Author: tjx
+ * @Description: 资源分页查询
+ * @Date: 创建于14:16 2020-12-18
  **/
 @Getter
 @Setter

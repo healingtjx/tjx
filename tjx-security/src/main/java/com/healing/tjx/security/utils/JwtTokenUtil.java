@@ -12,9 +12,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @作者: tjx
- * @描述: jwt token 生成类
- * @创建时间: 创建于10:41 2020-12-15
+ * @Author: tjx
+ * @Description: jwt token 生成类
+ * @Date: 创建于10:41 2020-12-15
  **/
 @Slf4j
 public class JwtTokenUtil {

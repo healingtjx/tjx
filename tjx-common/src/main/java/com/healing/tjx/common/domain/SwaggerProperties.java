@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @作者: tjx
- * @描述: Swagger自定义配置
- * @创建时间: 创建于11:02 2020-12-14
+ * @Author: tjx
+ * @Description: Swagger自定义配置
+ * @Date: 创建于11:02 2020-12-14
  **/
 @Data
 @Builder

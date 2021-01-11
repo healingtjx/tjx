@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @作者: tjx
- * @描述: 自定义返回结果：未登录或登录过期
- * @创建时间: 创建于10:05 2020-12-15
+ * @Author: tjx
+ * @Description: 自定义返回结果：未登录或登录过期
+ * @Date: 创建于10:05 2020-12-15
  **/
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     @Override

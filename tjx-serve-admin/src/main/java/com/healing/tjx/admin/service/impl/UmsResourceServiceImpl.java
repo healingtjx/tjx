@@ -26,9 +26,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @作者: tjx
- * @描述: 资源模块
- * @创建时间: 创建于10:19 2021-01-02
+ * @Author: tjx
+ * @Description: 资源模块
+ * @Date: 创建于10:19 2021-01-02
  **/
 @Service
 public class UmsResourceServiceImpl implements UmsResourceService {

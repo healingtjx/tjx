@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 /**
- * @作者: tjx
- * @描述: 处理LocalDateTime 返回结果timestamp
- * @创建时间: 创建于11:35 2020-12-28
+ * @Author: tjx
+ * @Description: 处理LocalDateTime 返回结果timestamp
+ * @Date: 创建于11:35 2020-12-28
  **/
 public class LocalDateTimeSerializerConfig {
 

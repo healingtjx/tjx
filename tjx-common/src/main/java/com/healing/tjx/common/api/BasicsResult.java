@@ -4,9 +4,9 @@ package com.healing.tjx.common.api;
 import lombok.Data;
 
 /**
- * @作者: tjx
- * @描述: 全局统一返回类(规范)
- * @创建时间: 创建于10:33 2020-12-10
+ * @Author: tjx
+ * @Description: 全局统一返回类(规范)
+ * @Date: 创建于10:33 2020-12-10
  **/
 @Data
 public class BasicsResult {

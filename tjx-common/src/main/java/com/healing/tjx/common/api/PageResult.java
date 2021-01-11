@@ -7,9 +7,9 @@ import lombok.Setter;
 import java.util.List;
 
 /**
- * @作者: tjx
- * @描述: 分页返回结果
- * @创建时间: 创建于10:39 2020-12-10
+ * @Author: tjx
+ * @Description: 分页返回结果
+ * @Date: 创建于10:39 2020-12-10
  **/
 @Getter
 @Setter

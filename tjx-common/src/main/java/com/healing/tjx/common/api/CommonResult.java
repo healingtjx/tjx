@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @作者: tjx
- * @描述: 基础返回类
- * @创建时间: 创建于10:36 2020-12-10
+ * @Author: tjx
+ * @Description: 基础返回类
+ * @Date: 创建于10:36 2020-12-10
  **/
 @Getter
 @Setter

@@ -7,9 +7,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 /**
- * @作者: tjx
- * @描述: 用于 SpringSecurity
- * @创建时间: 创建于10:23 2020-12-15
+ * @Author: tjx
+ * @Description: 用于 SpringSecurity
+ * @Date: 创建于10:23 2020-12-15
  **/
 public class AdminUserDetails implements UserDetails {
 

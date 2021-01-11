@@ -13,9 +13,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @作者: tjx
- * @描述: 计算处理业务所需时间的切面日志
- * @创建时间: 创建于10:52 2020-12-22
+ * @Author: tjx
+ * @Description: 计算处理业务所需时间的切面日志
+ * @Date: 创建于10:52 2020-12-22
  **/
 @Slf4j
 @Aspect

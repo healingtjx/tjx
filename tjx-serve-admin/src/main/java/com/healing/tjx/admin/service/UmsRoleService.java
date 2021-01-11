@@ -10,9 +10,9 @@ import com.healing.tjx.common.api.PageResult;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @作者: tjx
- * @描述:
- * @创建时间: 创建于10:27 2020-12-30
+ * @Author: tjx
+ * @Description:
+ * @Date: 创建于10:27 2020-12-30
  **/
 public interface UmsRoleService {
 
@@ -60,7 +60,7 @@ public interface UmsRoleService {
      * @param allocParam
      * @return CommonResult
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     CommonResult allocMenu(UmsRoleAllocParam allocParam);
 
 
@@ -70,6 +70,6 @@ public interface UmsRoleService {
      * @param allocParam
      * @return CommonResult
      */
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     CommonResult allocResource(UmsRoleAllocParam allocParam);
 }

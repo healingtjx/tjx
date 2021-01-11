@@ -7,9 +7,9 @@ import org.hibernate.validator.constraints.Length;
 
 
 /**
- * @作者: tjx
- * @描述: 新增/修改 管理员
- * @创建时间: 创建于14:37 2020-12-29
+ * @Author: tjx
+ * @Description: 新增/修改 管理员
+ * @Date: 创建于14:37 2020-12-29
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @作者: tjx
- * @描述: 自定义返回结果：没有权限访问时
- * @创建时间: 创建于10:07 2020-12-15
+ * @Author: tjx
+ * @Description: 自定义返回结果：没有权限访问时
+ * @Date: 创建于10:07 2020-12-15
  **/
 public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
 

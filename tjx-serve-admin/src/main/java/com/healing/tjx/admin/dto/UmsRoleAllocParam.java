@@ -7,9 +7,9 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 
 /**
- * @作者: tjx
- * @描述: 赋予权限请求
- * @创建时间: 创建于15:24 2021-01-05
+ * @Author: tjx
+ * @Description: 赋予权限请求
+ * @Date: 创建于15:24 2021-01-05
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

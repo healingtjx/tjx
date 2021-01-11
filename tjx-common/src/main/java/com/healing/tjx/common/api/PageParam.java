@@ -9,9 +9,9 @@ import lombok.EqualsAndHashCode;
 import javax.validation.constraints.NotNull;
 
 /**
- * @作者: tjx
- * @描述: 分页请求参数 (全局统一)
- * @创建时间: 创建于10:34 2020-12-25
+ * @Author: tjx
+ * @Description: 分页请求参数 (全局统一)
+ * @Date: 创建于10:34 2020-12-25
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

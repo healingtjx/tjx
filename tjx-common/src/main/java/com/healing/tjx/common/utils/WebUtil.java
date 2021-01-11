@@ -5,9 +5,9 @@ import cn.hutool.core.util.StrUtil;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @作者: tjx
- * @描述: 处理web相关的工具类
- * @创建时间: 创建于11:44 2020-12-22
+ * @Author: tjx
+ * @Description: 处理web相关的工具类
+ * @Date: 创建于11:44 2020-12-22
  **/
 public class WebUtil {
 

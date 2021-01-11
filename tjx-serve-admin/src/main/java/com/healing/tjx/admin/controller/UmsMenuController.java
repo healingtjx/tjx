@@ -17,9 +17,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @作者: tjx
- * @描述:
- * @创建时间: 创建于10:19 2020-12-31
+ * @Author: tjx
+ * @Description:
+ * @Date: 创建于10:19 2020-12-31
  **/
 @Slf4j
 @RestController

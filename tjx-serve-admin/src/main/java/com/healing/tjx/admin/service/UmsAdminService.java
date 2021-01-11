@@ -9,9 +9,9 @@ import com.healing.tjx.common.api.PageResult;
 import com.healing.tjx.common.api.SortParam;
 
 /**
- * @作者: tjx
- * @描述:
- * @创建时间: 创建于10:59 2020-12-24
+ * @Author: tjx
+ * @Description:
+ * @Date: 创建于10:59 2020-12-24
  **/
 public interface UmsAdminService {
 

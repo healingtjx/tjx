@@ -2,8 +2,10 @@ package com.healing.tjx.common.api;
 
 
 /**
- * 枚举基本状态码
- */
+ * @Author: tjx
+ * @Description: 枚举基本状态码
+ * @Date: 创建于10:27 2020-12-30
+ **/
 public enum ResultCode {
     /**
      * 成功

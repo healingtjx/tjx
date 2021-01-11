@@ -18,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @作者: tjx
- * @描述: 用于jwt 鉴权
- * @创建时间: 创建于10:01 2020-12-15
+ * @Author: tjx
+ * @Description: 用于jwt 鉴权
+ * @Date: 创建于10:01 2020-12-15
  **/
 @Slf4j
 public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {

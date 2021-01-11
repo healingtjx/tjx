@@ -7,9 +7,9 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 /**
- * @作者: tjx
- * @描述: 用于返回树形结构数据
- * @创建时间: 创建于11:18 2021-01-05
+ * @Author: tjx
+ * @Description: 用于返回树形结构数据
+ * @Date: 创建于11:18 2021-01-05
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

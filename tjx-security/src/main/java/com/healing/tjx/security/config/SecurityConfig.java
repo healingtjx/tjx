@@ -16,9 +16,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 /**
- * @作者: tjx
- * @描述: 对SpringSecurity的配置的扩展，支持自定义白名单资源路径和查询用户逻辑
- * @创建时间: 创建于9:54 2020-12-15
+ * @Author: tjx
+ * @Description: 对SpringSecurity的配置的扩展，支持自定义白名单资源路径和查询用户逻辑
+ * @Date: 创建于9:54 2020-12-15
  **/
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 

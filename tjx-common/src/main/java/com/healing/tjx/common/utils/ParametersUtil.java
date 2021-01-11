@@ -8,9 +8,9 @@ import org.slf4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @作者: tjx
- * @描述: 获取参数工具类
- * @创建时间: 创建于15:51 2020-12-16
+ * @Author: tjx
+ * @Description: 获取参数工具类
+ * @Date: 创建于15:51 2020-12-16
  **/
 public class ParametersUtil {
 

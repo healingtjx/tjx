@@ -7,9 +7,9 @@ import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 
 /**
- * @作者: tjx
- * @描述: 资源分类管理
- * @创建时间: 创建于10:14 2021-01-04
+ * @Author: tjx
+ * @Description: 资源分类管理
+ * @Date: 创建于10:14 2021-01-04
  **/
 public interface UmsResourceCategoryService {
 

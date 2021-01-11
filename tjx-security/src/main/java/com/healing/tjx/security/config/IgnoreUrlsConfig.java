@@ -9,9 +9,9 @@ import java.util.List;
 
 
 /**
- * @作者: tjx
- * @描述: 对SpringSecurity的配置的扩展，用于配置白名单接口
- * @创建时间: 创建于9:54 2020-12-15
+ * @Author: tjx
+ * @Description: 对SpringSecurity的配置的扩展，用于配置白名单接口
+ * @Date: 创建于9:54 2020-12-15
  */
 @Getter
 @Setter

@@ -10,9 +10,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 /**
- * @作者: tjx
- * @描述: 新增/ 修改 菜单
- * @创建时间: 创建于10:35 2020-12-31
+ * @Author: tjx
+ * @Description: 新增/ 修改 菜单
+ * @Date: 创建于10:35 2020-12-31
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

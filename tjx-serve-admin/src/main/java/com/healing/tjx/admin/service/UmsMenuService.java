@@ -9,9 +9,9 @@ import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 
 /**
- * @作者: tjx
- * @描述: 菜单管理
- * @创建时间: 创建于10:22 2020-12-31
+ * @Author: tjx
+ * @Description: 菜单管理
+ * @Date: 创建于10:22 2020-12-31
  **/
 public interface UmsMenuService {
 

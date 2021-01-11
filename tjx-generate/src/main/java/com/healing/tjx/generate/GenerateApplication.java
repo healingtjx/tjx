@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @作者: tjx
- * @描述:
- * @创建时间: 创建于15:27 2020-12-10
+ * @Author: tjx
+ * @Description:
+ * @Date: 创建于15:27 2020-12-10
  **/
 public class GenerateApplication {
 

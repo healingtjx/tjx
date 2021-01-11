@@ -7,9 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * @作者: tjx
- * @描述:
- * @创建时间: 创建于11:09 2020-12-14
+ * @Author: tjx
+ * @Description:
+ * @Date: 创建于11:09 2020-12-14
  **/
 @Configuration
 @EnableSwagger2

@@ -25,9 +25,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * @作者: tjx
- * @描述: 菜单管理
- * @创建时间: 创建于10:22 2020-12-31
+ * @Author: tjx
+ * @Description: 菜单管理
+ * @Date: 创建于10:22 2020-12-31
  **/
 @Slf4j
 @Service

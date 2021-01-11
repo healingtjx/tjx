@@ -8,9 +8,9 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 /**
- * @作者: tjx
- * @描述: 用户信息返回类
- * @创建时间: 创建于14:16 2020-12-18
+ * @Author: tjx
+ * @Description: 用户信息返回类
+ * @Date: 创建于14:16 2020-12-18
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

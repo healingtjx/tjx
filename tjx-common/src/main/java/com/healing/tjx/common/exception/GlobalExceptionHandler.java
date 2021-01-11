@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @作者: tjx
- * @描述: 全局异常捕获处理
- * @创建时间: 创建于11:19 2020-12-14
+ * @Author: tjx
+ * @Description: 全局异常捕获处理
+ * @Date: 创建于11:19 2020-12-14
  **/
 @Slf4j
 @ControllerAdvice

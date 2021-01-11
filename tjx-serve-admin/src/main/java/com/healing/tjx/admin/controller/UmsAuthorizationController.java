@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 
 /**
- * @作者: tjx
- * @描述: 用户认证模块
- * @创建时间: 创建于10:10 2020-12-14
+ * @Author: tjx
+ * @Description: 用户认证模块
+ * @Date: 创建于10:10 2020-12-14
  **/
 @Slf4j
 @RestController

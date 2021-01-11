@@ -5,9 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 /**
- * @作者: tjx
- * @描述: 用于数据排序
- * @创建时间: 创建于16:23 2020-12-28
+ * @Author: tjx
+ * @Description: 用于数据排序
+ * @Date: 创建于16:23 2020-12-28
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)

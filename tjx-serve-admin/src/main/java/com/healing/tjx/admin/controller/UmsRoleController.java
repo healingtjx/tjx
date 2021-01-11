@@ -1,6 +1,5 @@
 package com.healing.tjx.admin.controller;
 
-import com.healing.tjx.admin.dto.UmsMenuChangeParam;
 import com.healing.tjx.admin.dto.UmsRoleAllocParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
@@ -19,9 +18,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * @作者: tjx
- * @描述: 角色管理
- * @创建时间: 创建于10:25 2020-12-30
+ * @Author: tjx
+ * @Description: 角色管理
+ * @Date: 创建于10:25 2020-12-30
  **/
 @Slf4j
 @RestController

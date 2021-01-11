@@ -7,9 +7,9 @@ import org.springframework.web.filter.CorsFilter;
 
 
 /**
- * @作者: tjx
- * @描述: 跨域配置
- * @创建时间: 创建于11:44 2020-12-18
+ * @Author: tjx
+ * @Description: 跨域配置
+ * @Date: 创建于11:44 2020-12-18
  **/
 public class GlobalCorsConfig {
 

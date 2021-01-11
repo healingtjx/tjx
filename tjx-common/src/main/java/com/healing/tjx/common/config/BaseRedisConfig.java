@@ -21,10 +21,13 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
+
+
 /**
- * Redis基础配置
- * Created by macro on 2020/6/19.
- */
+ * @Author: tjx
+ * @Description: redis配置
+ * @Date: 创建于10:27 2020-12-30
+ **/
 public class BaseRedisConfig {
 
     @Bean

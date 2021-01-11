@@ -10,9 +10,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
- * @作者: tjx
- * @描述:
- * @创建时间: 创建于10:12 2020-12-15
+ * @Author: tjx
+ * @Description:
+ * @Date: 创建于10:12 2020-12-15
  **/
 @Configuration
 @EnableWebSecurity
