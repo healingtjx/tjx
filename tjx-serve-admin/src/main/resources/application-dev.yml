@@ -1,6 +1,6 @@
 #配置日志位置
 logback:
-  loghome: E:\log\admin
+  loghome: /Users/tjx/Documents/studyProgram/log/tjx
 
 #配置显示 mapper sql信息 和 调试信息
 logging:
