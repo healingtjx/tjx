@@ -124,6 +124,18 @@ CREATE TABLE `ums_role_resource_relation` (
 ) ENGINE=InnoDB AUTO_INCREMENT=545 DEFAULT CHARSET=utf8 COMMENT='后台角色资源关系表';
 
 
+-- 系统配置信息
+CREATE TABLE `sys_config` (
+	`id` bigint NOT NULL AUTO_INCREMENT,
+	`param_key` varchar(50) COMMENT 'key',
+	`param_value` varchar(2000) COMMENT 'value',
+	`status` tinyint DEFAULT 1 COMMENT '状态   0：隐藏   1：显示',
+	`remark` varchar(500) COMMENT '备注',
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX (`param_key`)
+) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8mb4 COMMENT='系统配置信息表';
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
