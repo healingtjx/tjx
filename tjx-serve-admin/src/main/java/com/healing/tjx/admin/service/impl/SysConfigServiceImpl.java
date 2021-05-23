@@ -2,13 +2,15 @@ package com.healing.tjx.admin.service.impl;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.healing.tjx.admin.config.SysConfigEnum;
 import com.healing.tjx.admin.dto.SysConfigDto;
 import com.healing.tjx.admin.entity.SysConfig;
 import com.healing.tjx.admin.mapper.SysConfigMapper;
 import com.healing.tjx.admin.service.SysConfigService;
 import com.healing.tjx.common.api.CommonResult;
+import com.healing.tjx.common.domain.SysConfigEnum;
 import com.healing.tjx.common.exception.Asserts;
+import com.healing.tjx.common.oss.CloudStorageConfig;
+import com.healing.tjx.common.service.RedisService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -24,9 +26,12 @@ public class SysConfigServiceImpl implements SysConfigService {
     @Resource
     private SysConfigMapper sysConfigMapper;
 
+    @Resource
+    private RedisService redisService;
+
 
     @Override
-    public CommonResult config() {
+    public CommonResult configOSS() {
         LambdaQueryWrapper<SysConfig> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.eq(SysConfig::getParamKey, SysConfigEnum.OSS_CONFIG);
         SysConfig config = sysConfigMapper.selectOne(queryWrapper);
@@ -35,12 +40,14 @@ public class SysConfigServiceImpl implements SysConfigService {
         }
         //获取内容转化为对象
         String paramValue = config.getParamValue();
-        SysConfigDto bean = JSONUtil.toBean(paramValue, SysConfigDto.class);
+        CloudStorageConfig bean = JSONUtil.toBean(paramValue, CloudStorageConfig.class);
+        //刷新到redis
+        redisService.set(SysConfigEnum.OSS_CONFIG.toString(), bean);
         return CommonResult.success(bean);
     }
 
     @Override
-    public CommonResult save(SysConfigDto param) {
+    public CommonResult saveOSS(SysConfigDto param) {
         //解析参数
         String jsonStr = JSONUtil.toJsonStr(param);
         LambdaQueryWrapper<SysConfig> queryWrapper = new LambdaQueryWrapper<>();
@@ -63,6 +70,8 @@ public class SysConfigServiceImpl implements SysConfigService {
                 Asserts.fail("插入数据库失败");
             }
         }
+        //把最新的配置刷新到redis
+        this.configOSS();
         return CommonResult.success();
     }
 

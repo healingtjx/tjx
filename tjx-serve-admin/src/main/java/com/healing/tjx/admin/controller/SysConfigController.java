@@ -26,16 +26,16 @@ public class SysConfigController {
     @Autowired
     private SysConfigService sysConfigService;
 
-    @ApiOperation(value = "获取配置")
-    @GetMapping("/config")
+    @ApiOperation(value = "获取OSS配置")
+    @GetMapping("/configOSS")
     public CommonResult config() {
-        return sysConfigService.config();
+        return sysConfigService.configOSS();
     }
 
-    @ApiOperation(value = "保存配置")
-    @PostMapping("/save")
+    @ApiOperation(value = "保存OSS配置")
+    @PostMapping("/saveOSS")
     public CommonResult save(@Validated @RequestBody SysConfigDto param) {
-        return sysConfigService.save(param);
+        return sysConfigService.saveOSS(param);
     }
 
 }

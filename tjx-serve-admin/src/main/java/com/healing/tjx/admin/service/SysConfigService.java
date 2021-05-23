@@ -12,17 +12,17 @@ public interface SysConfigService {
 
 
     /**
-     * 获取配置信息
+     * 获取OSS配置信息
      *
      * @return
      */
-    CommonResult config();
+    CommonResult configOSS();
 
     /**
-     * 保存配置
+     * 保存OSS配置
      *
      * @return
      */
-    CommonResult save(SysConfigDto param);
+    CommonResult saveOSS(SysConfigDto param);
 }
 
