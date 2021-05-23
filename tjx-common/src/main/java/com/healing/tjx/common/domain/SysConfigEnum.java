@@ -1,4 +1,4 @@
-package com.healing.tjx.admin.config;
+package com.healing.tjx.common.domain;
 
 /**
  * @author tjx
@@ -6,6 +6,9 @@ package com.healing.tjx.admin.config;
  * @Date 2021/5/18 9:32 下午
  */
 public enum SysConfigEnum {
+    /**
+     * OSS配置
+     */
     OSS_CONFIG("OSS_CONFIG");
 
     private String key;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/tjx.iml" filepath="$PROJECT_DIR$/.idea/tjx.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tjx-common/tjx-common.iml" filepath="$PROJECT_DIR$/tjx-common/tjx-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tjx-generate/tjx-generate.iml" filepath="$PROJECT_DIR$/tjx-generate/tjx-generate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tjx-security/tjx-security.iml" filepath="$PROJECT_DIR$/tjx-security/tjx-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tjx-serve-admin/tjx-serve-admin.iml" filepath="$PROJECT_DIR$/tjx-serve-admin/tjx-serve-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tjx-serve-shop/tjx-serve-shop.iml" filepath="$PROJECT_DIR$/tjx-serve-shop/tjx-serve-shop.iml" />
+    </modules>
+  </component>
+</project>

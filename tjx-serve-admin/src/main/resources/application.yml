@@ -48,3 +48,5 @@ secure:
       - /druid/**
       # admin用户登陆接口
       - /ums/authentication/login
+      # 文件上传
+      - /upload/file/img
