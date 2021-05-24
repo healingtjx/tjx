@@ -39,7 +39,7 @@ public class CloudStorageConfig {
      */
     private String qcloudDomain;
     private String qcloudPrefix;
-    private String qcloudAppId;
+    private long qcloudAppId;
     private String qcloudSecretId;
     private String qcloudSecretKey;
     private String qcloudBucketName;

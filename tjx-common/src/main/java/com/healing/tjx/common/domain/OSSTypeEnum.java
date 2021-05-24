@@ -9,7 +9,15 @@ public enum OSSTypeEnum {
     /**
      * 阿里云
      */
-    ALIYUN(0);
+    ALIYUN(0),
+    /**
+     * 七牛云
+     */
+    QINIUYUN(1),
+    /**
+     * 腾讯云
+     */
+    QYUN(2);
 
     private int type;
 

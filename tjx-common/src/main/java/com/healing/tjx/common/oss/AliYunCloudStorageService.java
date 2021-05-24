@@ -11,11 +11,11 @@ import java.io.InputStream;
  * @Description 阿里云oss配置
  * @Date 2021/5/23 10:19 下午
  */
-public class AliyunCloudStorageService extends CloudStorageService {
+public class AliYunCloudStorageService extends CloudStorageService {
 
     private OSSClient client;
 
-    public AliyunCloudStorageService(CloudStorageConfig config) {
+    public AliYunCloudStorageService(CloudStorageConfig config) {
         this.config = config;
         //初始化
         init();

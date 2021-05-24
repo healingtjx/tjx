@@ -2,6 +2,7 @@ package com.healing.tjx.common.oss;
 
 import com.healing.tjx.common.domain.OSSTypeEnum;
 import com.healing.tjx.common.domain.SysConfigEnum;
+import com.healing.tjx.common.exception.Asserts;
 import com.healing.tjx.common.service.RedisService;
 import com.healing.tjx.common.utils.SpringContextUtils;
 
@@ -31,10 +32,16 @@ public final class OSSFactory {
         if (storageConfig != null) {
             //根据不同类型转化成不同上传对象
             if (storageConfig.getType().intValue() == OSSTypeEnum.ALIYUN.getType()) {
-                return new AliyunCloudStorageService(storageConfig);
+                return new AliYunCloudStorageService(storageConfig);
+            }
+            if (storageConfig.getType().intValue() == OSSTypeEnum.QINIUYUN.getType()) {
+                return new QiNiuCloudStorageService(storageConfig);
+            }
+            if (storageConfig.getType().intValue() == OSSTypeEnum.QYUN.getType()) {
+                return new QcloudCloudStorageService(storageConfig);
             }
         }
-
+        Asserts.fail("请检查配置");
         return null;
     }
 }
