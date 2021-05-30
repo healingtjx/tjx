@@ -14,4 +14,11 @@
 
 
     </select>
+    <select id="selectPageAdmin" resultType="com.healing.tjx.admin.dto.UmsAdminResult">
+        select GROUP_CONCAT(r.`name` SEPARATOR ',') roles,s.id,s.username,s.nick_name,s.email,s.note,s.create_time,s.`status` from ums_admin s
+        left JOIN ums_role_permission_relation p on p.permission_id = s.id
+        left JOIN ums_role r on r.id = p.role_id
+        GROUP BY s.id
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

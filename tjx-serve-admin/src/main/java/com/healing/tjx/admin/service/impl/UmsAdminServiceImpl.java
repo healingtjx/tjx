@@ -4,12 +4,19 @@ import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.healing.tjx.admin.dto.UmsAdminAssignParam;
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
+import com.healing.tjx.admin.dto.UmsAdminResult;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
 import com.healing.tjx.admin.entity.UmsAdmin;
+import com.healing.tjx.admin.entity.UmsRole;
+import com.healing.tjx.admin.entity.UmsRolePermissionRelation;
 import com.healing.tjx.admin.mapper.UmsAdminMapper;
+import com.healing.tjx.admin.mapper.UmsRoleMapper;
+import com.healing.tjx.admin.mapper.UmsRolePermissionRelationMapper;
 import com.healing.tjx.admin.service.UmsAdminService;
 import com.healing.tjx.admin.utils.SaltUtil;
 import com.healing.tjx.common.api.CommonResult;
@@ -41,15 +48,20 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Resource
     private UmsAdminMapper umsAdminMapper;
 
+    @Resource
+    private UmsRoleMapper umsRoleMapper;
+
+    @Resource
+    private UmsRolePermissionRelationMapper umsRolePermissionRelationMapper;
+
     @Override
-    public PageResult<UmsAdmin> list(PageParam pageParam, SortParam sort, String name) {
+    public PageResult<UmsAdminResult> list(PageParam pageParam, SortParam sort, String name) {
         //查询
-        QueryWrapper<UmsAdmin> queryWrapper = new QueryWrapper<>();
-        queryWrapper.select("id", "username", "nick_name", "create_time", "login_time", "status", "note", "email");
+        QueryWrapper queryWrapper = new QueryWrapper<>();
 
         //查询名称
         if (!StrUtil.hasEmpty(name)) {
-            queryWrapper.like("concat(username,nick_name)", name);
+            queryWrapper.like("concat(s.username,s.nick_name)", name);
         }
 
         //排序
@@ -60,14 +72,44 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             }
             //是否降序
             if (sort.getSortDescen() != null && sort.getSortDescen()) {
-                queryWrapper.orderByDesc(sort.getSortKey());
+                queryWrapper.orderByDesc("s." + sort.getSortKey());
             } else {
-                queryWrapper.orderByAsc(sort.getSortKey());
+                queryWrapper.orderByAsc("s." + sort.getSortKey());
             }
         }
         //执行查询
-        IPage<UmsAdmin> umsAdminPage = umsAdminMapper.selectPage(pageParam.generatePagination(), queryWrapper);
+        IPage<UmsAdminResult> umsAdminPage = umsAdminMapper.selectPageAdmin(pageParam.generatePagination(), queryWrapper);
+
         return PageResult.success(umsAdminPage);
+    }
+
+    @Override
+    public PageResult<UmsRole> accreditList(int adminId) {
+        List<UmsRole> roles = umsRoleMapper.selectRoleByAdminId(adminId);
+        return PageResult.success(roles);
+    }
+
+    @Override
+    public CommonResult assign(UmsAdminAssignParam param) {
+        //判断管理员
+        long adminId = param.getAdminId();
+        UmsAdmin admin = umsAdminMapper.selectById(adminId);
+        if (admin == null) {
+            Asserts.fail("用户不存在");
+        }
+        //清空之前配置
+        LambdaQueryWrapper<UmsRolePermissionRelation> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(UmsRolePermissionRelation::getPermissionId, adminId);
+        umsRolePermissionRelationMapper.delete(queryWrapper);
+        //重写配置新的
+        Long[] roleIds = param.getRoleIds();
+        for (Long roleId : roleIds) {
+            UmsRolePermissionRelation relation = new UmsRolePermissionRelation();
+            relation.setPermissionId(adminId);
+            relation.setRoleId(roleId);
+            umsRolePermissionRelationMapper.insert(relation);
+        }
+        return CommonResult.success();
     }
 
     @Override

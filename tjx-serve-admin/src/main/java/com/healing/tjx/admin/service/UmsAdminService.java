@@ -1,8 +1,10 @@
 package com.healing.tjx.admin.service;
 
+import com.healing.tjx.admin.dto.UmsAdminAssignParam;
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
+import com.healing.tjx.admin.dto.UmsAdminResult;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsAdmin;
+import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
@@ -23,8 +25,24 @@ public interface UmsAdminService {
      * @param name      姓名 用于搜索
      * @return CommonResult<UmsAdmin>
      */
-    PageResult<UmsAdmin> list(PageParam pageParam, SortParam sortParam, String name);
+    PageResult<UmsAdminResult> list(PageParam pageParam, SortParam sortParam, String name);
 
+
+    /**
+     * 权限列表
+     *
+     * @param adminId 管理id
+     * @return
+     */
+    PageResult<UmsRole> accreditList(int adminId);
+
+    /**
+     * 角色分配
+     *
+     * @param param
+     * @return
+     */
+    CommonResult assign(UmsAdminAssignParam param);
 
     /**
      * 修改/新增 管理员

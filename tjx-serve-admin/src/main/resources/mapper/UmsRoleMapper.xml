@@ -7,5 +7,6 @@
       from `ums_role_permission_relation` r
       inner join `ums_role` ro on r.`role_id` = ro.id
       where r.`permission_id` = #{adminId}
+      group by ro.id
     </select>
 </mapper>

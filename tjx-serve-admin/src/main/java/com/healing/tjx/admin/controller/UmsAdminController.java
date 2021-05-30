@@ -1,9 +1,10 @@
 package com.healing.tjx.admin.controller;
 
 import cn.hutool.core.util.StrUtil;
+import com.healing.tjx.admin.dto.UmsAdminAssignParam;
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
+import com.healing.tjx.admin.dto.UmsAdminResult;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.service.UmsAdminService;
 import com.healing.tjx.common.api.*;
 import io.swagger.annotations.Api;
@@ -31,8 +32,20 @@ public class UmsAdminController {
     @ApiOperation(value = "管理员列表")
     @ApiImplicitParam(paramType = "query", name = "name", value = "姓名搜索", dataType = "String")
     @GetMapping("/list")
-    public PageResult<UmsAdmin> list(@Validated PageParam page, SortParam sortParam, String name) {
+    public PageResult<UmsAdminResult> list(@Validated PageParam page, SortParam sortParam, String name) {
         return umsAdminService.list(page, sortParam, name);
+    }
+
+    @ApiOperation(value = "根据管理员id查询当前管理员授权过的角色")
+    @GetMapping("/accreditList")
+    public PageResult accreditList(int adminId) {
+        return umsAdminService.accreditList(adminId);
+    }
+
+    @ApiOperation(value = "分配角色")
+    @PostMapping("/assign")
+    public CommonResult assign(@Validated @RequestBody UmsAdminAssignParam param) {
+        return umsAdminService.assign(param);
     }
 
 
