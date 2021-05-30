@@ -1,11 +1,13 @@
 package com.healing.tjx.common.aspect;
 
+import com.healing.tjx.common.service.SystemLogService;
 import com.healing.tjx.common.utils.ParametersUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -23,6 +25,9 @@ import javax.servlet.http.HttpServletRequest;
 public class ComputeHandleBusinessTimeAspect {
 
 
+    @Autowired
+    private SystemLogService systemLogService;
+
     @Around("execution(public * com.healing.tjx.*.controller.*.*(..))")
     public Object timeAround(ProceedingJoinPoint joinPoint) throws Throwable {
         //获取请求
@@ -38,8 +43,11 @@ public class ComputeHandleBusinessTimeAspect {
         //获取方法名
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         String methodName = signature.getDeclaringTypeName() + "." + signature.getName();
+        long time = endTime - startTime;
         //展示日志
-        ParametersUtil.showHandleBusinessTime(log, object, methodName, (endTime - startTime));
+        ParametersUtil.showHandleBusinessTime(log, object, methodName, time);
+        //记录操作日志
+        systemLogService.recordLog(request, methodName, time, joinPoint);
         return object;
     }
 
