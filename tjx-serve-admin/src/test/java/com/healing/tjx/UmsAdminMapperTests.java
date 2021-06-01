@@ -5,8 +5,8 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.healing.tjx.admin.AdminApplication;
-import com.healing.tjx.admin.entity.UmsAdmin;
-import com.healing.tjx.admin.mapper.UmsAdminMapper;
+import com.healing.tjx.datasource.entity.UmsAdmin;
+import com.healing.tjx.datasource.mapper.UmsAdminMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +29,10 @@ public class UmsAdminMapperTests {
 
     @Resource
     private UmsAdminMapper umsAdminMapper;
-    
+
 
     @Test
-    public void testAll(){
+    public void testAll() {
 
         List<UmsAdmin> umsAdmins = umsAdminMapper.selectList(null);
         System.out.println(JSONUtil.toJsonStr(umsAdmins));

@@ -13,22 +13,16 @@
 
     <!-- jar -->
     <dependencies>
-        <!-- common -->
+        <!-- security -->
         <dependency>
             <groupId>com.healing.tjx</groupId>
             <artifactId>tjx-security</artifactId>
         </dependency>
-        <!-- mysql jdbc 驱动 -->
+        <!-- security -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>com.healing.tjx</groupId>
+            <artifactId>tjx-datasource</artifactId>
         </dependency>
-        <!--集成druid连接池-->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-        </dependency>
-
 
     </dependencies>
 

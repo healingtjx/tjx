@@ -1,6 +1,6 @@
 package com.healing.tjx.admin.bo;
 
-import com.healing.tjx.admin.entity.UmsAdmin;
+import com.healing.tjx.datasource.entity.UmsAdmin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

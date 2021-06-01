@@ -3,8 +3,8 @@ package com.healing.tjx.admin.service;
 import com.healing.tjx.admin.dto.AdminInfoResult;
 import com.healing.tjx.admin.dto.TokenResult;
 import com.healing.tjx.admin.dto.UmsAdminLoginParam;
-import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.common.api.CommonResult;
+import com.healing.tjx.datasource.entity.UmsAdmin;
 import org.springframework.security.core.userdetails.UserDetails;
 
 

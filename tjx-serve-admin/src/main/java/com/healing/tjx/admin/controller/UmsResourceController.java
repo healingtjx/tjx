@@ -3,10 +3,10 @@ package com.healing.tjx.admin.controller;
 import com.healing.tjx.admin.dto.AllocResult;
 import com.healing.tjx.admin.dto.UmsResourceChangeParam;
 import com.healing.tjx.admin.dto.UmsResourcePageParam;
-import com.healing.tjx.admin.entity.UmsResource;
 import com.healing.tjx.admin.service.UmsResourceService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsResource;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -43,7 +43,6 @@ public class UmsResourceController {
     public CommonResult<AllocResult> treeList(int roleId) {
         return umsResourceService.treeList(roleId);
     }
-
 
 
     @ApiOperation(value = "新增/修改 资源")

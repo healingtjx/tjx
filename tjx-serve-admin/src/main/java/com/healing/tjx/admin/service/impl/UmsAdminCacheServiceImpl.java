@@ -1,8 +1,8 @@
 package com.healing.tjx.admin.service.impl;
 
-import com.healing.tjx.admin.entity.UmsAdmin;
 import com.healing.tjx.admin.service.UmsAdminCacheService;
 import com.healing.tjx.common.service.RedisService;
+import com.healing.tjx.datasource.entity.UmsAdmin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

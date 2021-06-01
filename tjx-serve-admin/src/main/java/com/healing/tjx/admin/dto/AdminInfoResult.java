@@ -1,6 +1,6 @@
 package com.healing.tjx.admin.dto;
 
-import com.healing.tjx.admin.entity.UmsMenu;
+import com.healing.tjx.datasource.entity.UmsMenu;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

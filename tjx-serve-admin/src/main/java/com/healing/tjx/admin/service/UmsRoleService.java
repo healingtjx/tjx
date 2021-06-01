@@ -3,10 +3,10 @@ package com.healing.tjx.admin.service;
 import com.healing.tjx.admin.dto.UmsRoleAllocParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsRole;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

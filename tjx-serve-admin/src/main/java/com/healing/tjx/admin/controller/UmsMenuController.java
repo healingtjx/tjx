@@ -3,11 +3,11 @@ package com.healing.tjx.admin.controller;
 import com.healing.tjx.admin.dto.AllocResult;
 import com.healing.tjx.admin.dto.UmsMenuChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsMenu;
 import com.healing.tjx.admin.service.UmsMenuService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsMenu;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -46,7 +46,6 @@ public class UmsMenuController {
     public CommonResult<AllocResult> treeList(int roleId) {
         return umsMenuService.treeList(roleId);
     }
-
 
 
     @ApiOperation(value = "新增/修改 菜单")

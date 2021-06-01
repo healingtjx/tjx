@@ -3,12 +3,12 @@ package com.healing.tjx.admin.controller;
 import com.healing.tjx.admin.dto.UmsRoleAllocParam;
 import com.healing.tjx.admin.dto.UmsRoleChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.admin.service.UmsRoleService;
 import com.healing.tjx.common.api.BasicsResult;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsRole;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -57,7 +57,6 @@ public class UmsRoleController {
     public CommonResult delete(int id) {
         return umsRoleService.delete(id);
     }
-
 
 
     @ApiOperation(value = "给角色赋予菜单权限")

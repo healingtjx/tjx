@@ -1,11 +1,11 @@
 package com.healing.tjx.admin.controller;
 
 import com.healing.tjx.admin.dto.UmsResourceCategoryChangeParam;
-import com.healing.tjx.admin.entity.UmsResourceCategory;
 import com.healing.tjx.admin.service.UmsResourceCategoryService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsResourceCategory;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

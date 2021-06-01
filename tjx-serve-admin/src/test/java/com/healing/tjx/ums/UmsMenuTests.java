@@ -2,8 +2,8 @@ package com.healing.tjx.ums;
 
 import cn.hutool.json.JSONUtil;
 import com.healing.tjx.admin.AdminApplication;
-import com.healing.tjx.admin.entity.UmsMenu;
-import com.healing.tjx.admin.mapper.UmsMenuMapper;
+import com.healing.tjx.datasource.entity.UmsMenu;
+import com.healing.tjx.datasource.mapper.UmsMenuMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

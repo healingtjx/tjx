@@ -1,6 +1,6 @@
 package com.healing.tjx.admin.service;
 
-import com.healing.tjx.admin.entity.UmsAdmin;
+import com.healing.tjx.datasource.entity.UmsAdmin;
 
 /**
  * @Author: tjx

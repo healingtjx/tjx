@@ -2,13 +2,13 @@ package com.healing.tjx.admin.service;
 
 import com.healing.tjx.admin.dto.UmsAdminAssignParam;
 import com.healing.tjx.admin.dto.UmsAdminChangeParam;
-import com.healing.tjx.admin.dto.UmsAdminResult;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsRole;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
 import com.healing.tjx.common.api.SortParam;
+import com.healing.tjx.datasource.entity.UmsRole;
+import com.healing.tjx.datasource.expand.UmsAdminResult;
 
 /**
  * @Author: tjx

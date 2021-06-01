@@ -3,10 +3,10 @@ package com.healing.tjx.admin.service;
 import com.healing.tjx.admin.dto.AllocResult;
 import com.healing.tjx.admin.dto.UmsMenuChangeParam;
 import com.healing.tjx.admin.dto.UpdateStatusParam;
-import com.healing.tjx.admin.entity.UmsMenu;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsMenu;
 
 /**
  * @Author: tjx
@@ -28,7 +28,7 @@ public interface UmsMenuService {
     /**
      * 角色授权菜单列表
      *
-     * @param roleId  角色id
+     * @param roleId 角色id
      * @return PageResult<UmsMenu>
      */
     CommonResult<AllocResult> treeList(int roleId);

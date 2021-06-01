@@ -1,10 +1,10 @@
 package com.healing.tjx.admin.service;
 
 import com.healing.tjx.admin.dto.UmsResourceCategoryChangeParam;
-import com.healing.tjx.admin.entity.UmsResourceCategory;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.entity.UmsResourceCategory;
 
 /**
  * @Author: tjx

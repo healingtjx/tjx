@@ -3,11 +3,11 @@ package com.healing.tjx.admin.service.impl;
 import cn.hutool.core.util.StrUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.healing.tjx.admin.dto.SysLogResult;
-import com.healing.tjx.admin.mapper.SysLogMapper;
 import com.healing.tjx.admin.service.SysLogService;
 import com.healing.tjx.common.api.PageParam;
 import com.healing.tjx.common.api.PageResult;
+import com.healing.tjx.datasource.expand.SysLogResult;
+import com.healing.tjx.datasource.mapper.SysLogMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

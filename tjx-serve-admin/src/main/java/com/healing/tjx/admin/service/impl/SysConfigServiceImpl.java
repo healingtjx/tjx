@@ -3,14 +3,14 @@ package com.healing.tjx.admin.service.impl;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.healing.tjx.admin.dto.SysConfigDto;
-import com.healing.tjx.admin.entity.SysConfig;
-import com.healing.tjx.admin.mapper.SysConfigMapper;
 import com.healing.tjx.admin.service.SysConfigService;
 import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.domain.SysConfigEnum;
 import com.healing.tjx.common.exception.Asserts;
 import com.healing.tjx.common.oss.CloudStorageConfig;
 import com.healing.tjx.common.service.RedisService;
+import com.healing.tjx.datasource.entity.SysConfig;
+import com.healing.tjx.datasource.mapper.SysConfigMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
