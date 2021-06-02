@@ -1,0 +1,49 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: tjx-cms
+  profiles:
+    active: dev #默认为开发环境
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true #配置返回时间戳
+
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: XjGs72orcYb0q5yArAwN #JWT加解密使用的密钥(使用的强密码)
+  expiration: 604800 #JWT的超期限时间(60*60*24*7)
+  tokenHead: 'Bearer '  #JWT负载中拿到开头
+
+#mybatis-plus 扫描配置
+mybatis-plus:
+  mapper-locations:
+    - classpath:mapper/*.xml
+
+redis:
+  database: cms
+  keys:
+    admin: 'ums:user'
+  expire:
+    common: 86400 # 24小时
+
+secure:
+  ignored:
+    urls: #安全路径白名单
+      # swagger 相关
+      - /swagger-ui.html
+      - /swagger-resources/**
+      - /swagger/**
+      - /**/v2/api-docs
+      - /webjars/springfox-swagger-ui/**
+      # knife4j( Swagger 皮肤)
+      - /doc.html
+      # 公共资源
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.ico
+      # druid
+      - /druid/**
+      - /Test/**
