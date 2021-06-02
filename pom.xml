@@ -15,6 +15,7 @@
         <module>tjx-serve-admin</module>
         <module>tjx-serve-shop</module>
         <module>tjx-datasource</module>
+        <module>tjx-serve-cms</module>
     </modules>
 
     <!-- 基于springboot 2.3.0 -->
