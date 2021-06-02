@@ -22,7 +22,7 @@ mybatis-plus:
     - classpath:mapper/*.xml
 
 redis:
-  database: tjx
+  database: admin
   keys:
     admin: 'ums:admin'
   expire:

@@ -3,7 +3,7 @@ package com.healing.tjx.admin.service.impl;
 import cn.hutool.crypto.SecureUtil;
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.healing.tjx.admin.bo.AdminUserDetails;
+import com.healing.tjx.admin.dto.AdminUserDetails;
 import com.healing.tjx.admin.dto.AdminInfoResult;
 import com.healing.tjx.admin.dto.TokenResult;
 import com.healing.tjx.admin.dto.UmsAdminLoginParam;
