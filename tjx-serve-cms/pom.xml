@@ -18,12 +18,16 @@
             <groupId>com.healing.tjx</groupId>
             <artifactId>tjx-security</artifactId>
         </dependency>
-        <!-- security -->
+        <!-- dao -->
         <dependency>
             <groupId>com.healing.tjx</groupId>
             <artifactId>tjx-datasource</artifactId>
         </dependency>
-
+        <!-- 解密微信小程序data-->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+        </dependency>
     </dependencies>
 
 
