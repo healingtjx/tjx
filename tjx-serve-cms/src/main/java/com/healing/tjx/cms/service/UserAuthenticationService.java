@@ -1,5 +1,7 @@
 package com.healing.tjx.cms.service;
 
+import com.healing.tjx.cms.dto.WxAuthorizationParam;
+import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.datasource.entity.UserBase;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -26,5 +28,14 @@ public interface UserAuthenticationService {
      * @return UserDetails
      */
     UserDetails loadUserByUserId(String userId);
+
+
+    /**
+     * 微信小程序授权登陆
+     *
+     * @param param
+     * @return
+     */
+    CommonResult appletAuth(WxAuthorizationParam param);
 }
 

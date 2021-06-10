@@ -25,6 +25,9 @@ public class UserBaseCacheServiceImpl implements UserBaseCacheService {
     @Value("${redis.keys.admin}")
     private String REDIS_KEY_ADMIN;
 
+    @Value("${redis.keys.sessionKey}")
+    private String REDIS_KEY_SESSION_KEY;
+
     @Autowired
     private RedisService redisService;
 
@@ -44,6 +47,18 @@ public class UserBaseCacheServiceImpl implements UserBaseCacheService {
     public void delUser(String userId) {
         String key = REDIS_DATABASE + ":" + REDIS_KEY_ADMIN + userId;
         redisService.del(key);
+    }
+
+    @Override
+    public String getSessionKey(String code) {
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_SESSION_KEY + code;
+        return (String) redisService.get(key);
+    }
+
+    @Override
+    public void setSessionKey(String code, String sessionKey) {
+        String key = REDIS_DATABASE + ":" + REDIS_KEY_SESSION_KEY + code;
+        redisService.set(key, sessionKey, REDIS_EXPIRE);
     }
 }
 

@@ -3,6 +3,7 @@ package com.healing.tjx.cms.controller;
 import cn.hutool.json.JSONUtil;
 import com.healing.tjx.cms.dto.TokenResult;
 import com.healing.tjx.cms.dto.UserBaseDetails;
+import com.healing.tjx.common.api.CommonResult;
 import com.healing.tjx.common.version.ApiVersion;
 import com.healing.tjx.datasource.entity.UserBase;
 import com.healing.tjx.security.utils.JwtTokenUtil;
@@ -11,6 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -52,6 +54,12 @@ public class TestController {
         return "test";
     }
 
+
+    @ApiOperation(value = "")
+    @PostMapping("/")
+    public CommonResult list() {
+        return null;
+    }
 
 }
 

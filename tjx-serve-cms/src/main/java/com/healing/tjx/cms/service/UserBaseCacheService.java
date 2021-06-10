@@ -31,5 +31,22 @@ public interface UserBaseCacheService {
      * @param userId
      */
     void delUser(String userId);
+
+
+    /**
+     * 根据code 获取 SessionKey
+     *
+     * @param code
+     * @return
+     */
+    String getSessionKey(String code);
+
+    /**
+     * 设置 SessionKey
+     *
+     * @param code
+     * @param sessionKey
+     */
+    void setSessionKey(String code, String sessionKey);
 }
 

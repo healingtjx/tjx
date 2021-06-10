@@ -21,10 +21,17 @@ mybatis-plus:
   mapper-locations:
     - classpath:mapper/*.xml
 
+# 微信小程序配置
+weixin:
+  mini:
+    appid: 'wx2c91a1c3cf3b6d92'
+    secret: '27285d4dcb54af4755eddd184ecb1d8e'
+# redis业务key配置
 redis:
   database: cms
   keys:
     admin: 'ums:user'
+    sessionKey: 'session:key'
   expire:
     common: 86400 # 24小时
 
@@ -46,4 +53,6 @@ secure:
       - /**/*.ico
       # druid
       - /druid/**
-      - /Test/**
+      # 登陆接口
+      - /v1/auth/applet
+      - /v2/Test/**
