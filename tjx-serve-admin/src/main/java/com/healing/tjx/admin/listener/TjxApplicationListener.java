@@ -27,8 +27,8 @@ public class TjxApplicationListener implements ApplicationListener<ApplicationEv
         //容器启动事件
         if (applicationEvent instanceof ApplicationStartedEvent) {
             //刷新配置oss文件上传
-            CommonResult result = sysConfigService.configOSS();
-            log.info("刷新文件上传配置:{}", JSONUtil.toJsonStr(result));
+//            CommonResult result = sysConfigService.configOSS();
+//            log.info("刷新文件上传配置:{}", JSONUtil.toJsonStr(result));
         }
     }
 }
