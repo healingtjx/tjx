@@ -39,42 +39,4 @@ public class ParametersUtil {
         logger.debug("<==  结果{}", result);
 
     }
-
-    /**
-     * 展示请求相关的参数
-     *
-     * @param request
-     */
-    public static void showRequestParams(HttpServletRequest request, JoinPoint joinPoint, Logger logger) {
-
-        //获取ip
-        String currentUrl = request.getRequestURI();
-        String ctxPath = request.getContextPath();
-        String targetUrl = currentUrl.substring(ctxPath.length() + 1);
-        String ip = WebUtil.getRemoteAddrIp(request);
-        //展示请求基本信息
-        logger.info("------------------------------请求开始------------------------------");
-        logger.info("接口地址:" + targetUrl);
-        logger.info("ip地址:" + ip);
-        //展示请求参数
-        Object[] paramValues = joinPoint.getArgs();
-        String[] paramNames = ((CodeSignature) joinPoint.getSignature()).getParameterNames();
-        for (int i = 0; i < paramNames.length; i++) {
-            logger.debug("{} : {}", paramNames[i], JSONUtil.toJsonStr(paramValues[i]));
-        }
-    }
-
-
-    /**
-     * 展示结算结果
-     *
-     * @param result     结果
-     * @param logger     日志对象
-     * @param methodName 方法命
-     */
-    public static void showHandleBusinessTime(Logger logger, Object result, String methodName, long time) {
-        logger.debug("----- 返回结果: {}", JSONUtil.toJsonStr(result));
-        logger.info("-----{} 方式执行耗时: {} ms", methodName, time);
-        logger.info("------------------------------请求结束------------------------------");
-    }
 }

@@ -77,7 +77,7 @@
     <!-- 声明 基础 jar,子模块需要继承的化，就不用写版本号 -->
     <dependencyManagement>
         <dependencies>
-            <!-- mall通用模块 -->
+            <!-- 通用模块 -->
             <dependency>
                 <groupId>com.healing.tjx</groupId>
                 <artifactId>tjx-common</artifactId>

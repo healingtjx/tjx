@@ -3,6 +3,8 @@ package com.healing.tjx.common.utils;
 import cn.hutool.core.util.StrUtil;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  * @Author: tjx
@@ -10,6 +12,28 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 创建于11:44 2020-12-22
  **/
 public class WebUtil {
+
+
+    /**
+     * 获取requestBody
+     *
+     * @param request
+     * @return
+     */
+    public static String getBodyData(HttpServletRequest request) {
+        StringBuffer data = new StringBuffer();
+        String line;
+        BufferedReader reader;
+        try {
+            reader = request.getReader();
+            while (null != (line = reader.readLine())) {
+                data.append(line);
+            }
+        } catch (IOException e) {
+            return null;
+        }
+        return data.toString();
+    }
 
 
     /**
@@ -36,4 +60,7 @@ public class WebUtil {
         return (StrUtil.isNotBlank(value) && !"unknown"
                 .equalsIgnoreCase(value)) ? value : "";
     }
+
+
+
 }

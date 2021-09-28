@@ -1,5 +1,6 @@
 package com.healing.tjx.security.component;
 
+import com.healing.tjx.common.interceptor.BaseRequestWrapper;
 import com.healing.tjx.security.utils.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,15 +38,15 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
         //鉴权
         String authHeader = request.getHeader(tokenHeader);
-        log.info("authHeader {}", authHeader);
         if (authHeader != null && authHeader.startsWith(jwtTokenUtil.getTokenHead())) {
             // 提取去 token
             String authToken = authHeader.substring(jwtTokenUtil.getTokenHead().length());
             //从 token 中获取 username
             String username = jwtTokenUtil.getUserNameFromToken(authToken);
-            log.info("checking username:{}", username);
+            log.debug("checking username:{}", username);
             // 有 Authentication 对象的直接放行
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 //根据 username 获取 userDetails
@@ -55,12 +56,12 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                     // 生成 authentication 并且存入 security 框架里面
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    log.info("authenticated user:{}", username);
+                    log.debug("authenticated user:{}", username);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
         }
-        filterChain.doFilter(request, response);
+        filterChain.doFilter(new BaseRequestWrapper(request), response);
     }
 
 
